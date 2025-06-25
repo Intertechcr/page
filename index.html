@@ -352,7 +352,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form id="contactForm" action="https://formsubmit.co/intertechpacifico@gmail.com" method="POST">
+                    <form id="contactForm" action="https://formsubmit.co/df44edb20125f30bc31016a03936e3ce" method="POST">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_next" value="https://tusitio.com/gracias.html">
                         
@@ -467,7 +467,11 @@
     <script>
   function formSuccess() {
     alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-    document.getElementById('contactForm').reset();
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+    this.submit();
+});
   }
 </script>
 </body>
