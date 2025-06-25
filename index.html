@@ -351,7 +351,7 @@
                 </div>
                 
                 <div class="contact-form">
-                    
+                    <form id="contactForm" action="https://formsubmit.co/intertechpacifico@gmail.com" method="POST">
                         
                         <div class="form-group">
                             <label for="name">Nombre Completo *</label>
@@ -459,21 +459,26 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
     <script>
-        // Script para manejar el envío del formulario
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            
-            
-            // Aquí puedes agregar validación adicional si es necesario
-            
-            // Mostrar mensaje de éxito
-            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-            
-            // Enviar el formulario
-            this.submit();
-        });
-    </script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Mostrar mensaje de éxito
+        alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+        
+        // Enviar el formulario
+        this.submit();
+        
+        // Limpiar el formulario (nuevo)
+        this.reset();
+        
+        //Opcional: También puedes limpiar campos manualmente así:
+        document.getElementById('name').value = '';
+        document.getElementById('email').value = '';
+        document.getElementById('phone').value = '';
+        document.getElementById('service').selectedIndex = 0;
+        document.getElementById('message').value = '';
+    });
+</script>
 </body>
 </html>
