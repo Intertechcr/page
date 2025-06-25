@@ -459,25 +459,20 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <script>
+<script>
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Mostrar mensaje de éxito
-        alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+        // Mostrar mensaje
+        alert('Mensaje enviado con éxito. ¡Gracias!');
         
         // Enviar el formulario
         this.submit();
         
-        // Limpiar el formulario (nuevo)
-        this.reset();
-        
-        //Opcional: También puedes limpiar campos manualmente así:
-        document.getElementById('name').value = '';
-        document.getElementById('email').value = '';
-        document.getElementById('phone').value = '';
-        document.getElementById('service').selectedIndex = 0;
-        document.getElementById('message').value = '';
+        // Limpiar después de 100ms (para asegurar que primero se envía)
+        setTimeout(() => {
+            this.reset();
+        }, 100);
     });
 </script>
 </body>
