@@ -8,6 +8,7 @@
     <meta name="keywords" content="venta cámaras seguridad, instalación alarmas, redes WiFi, instalación equipos, Quepos, Puntarenas, Costa Rica">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <form id="contactForm" action="https://formsubmit.co/df44edb20125f30bc31016a03936e3ce" method="POST">
     <script src="js/script.js"></script>
 </head>
 <body>
@@ -461,21 +462,20 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Scripts -->
-    <script src="js/script.js"></script>
-    <script>
-        // Script para manejar el envío del formulario
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aquí puedes agregar validación adicional si es necesario
-            
-            // Mostrar mensaje de éxito
-            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-            
-            // Enviar el formulario
-            this.submit();
-        });
-    </script>
+    <form id="contactForm" action="https://formsubmit.co/df44edb20125f30bc31016a03936e3ce" method="POST" target="hidden_iframe">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_next" value="">
+  ...
+</form>
+
+<iframe name="hidden_iframe" style="display:none;" onload="formSuccess()"></iframe>
+
+<script>
+  function formSuccess() {
+    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+    document.getElementById('contactForm').reset();
+  }
+</script>
+    
 </body>
 </html>
