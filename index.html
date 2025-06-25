@@ -465,18 +465,10 @@
     <!-- Scripts -->
     <script src="js/script.js"></script>
     <script>
-        // Script para manejar el envío del formulario
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Aquí puedes agregar validación adicional si es necesario
-            
-            // Mostrar mensaje de éxito
-            alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-            
-            // Enviar el formulario
-            this.submit();
-        });
-    </script>
+  function formSuccess() {
+    alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
+    document.getElementById('contactForm').reset();
+  }
+</script>
 </body>
 </html>
