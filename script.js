@@ -75,47 +75,4 @@ window.addEventListener('scroll', function() {
         header.classList.remove('scrolled');
     }
 });
-formulario.addEventListener('submit', async function (e) {
-    e.preventDefault(); // Detiene el envío por defecto del navegador
-    const datos = new FormData(formulario); // Captura los datos del formulario
-    
-    try {
-        // Intenta enviar los datos a Formspree
-        const respuestaFetch = await fetch(formulario.action, {
-            method: 'POST',
-            body: datos,
-            headers: { 'Accept': 'application/json' }
-        });
 
-        // VISTA CLAVE: Esta es la condición que decide si el formulario se limpia
-        if (respuestaFetch.ok) {
-            // ✅ SI el servidor (Formspree) responde con un estado HTTP 2xx (éxito),
-            // ENTONCES, se ejecuta el siguiente código:
-            
-            formulario.reset(); // ¡Aquí se limpia el formulario! 🎉
-            
-            respuesta.style.display = 'block';
-            respuesta.style.color = 'green';
-            respuesta.textContent = '✅ ¡Mensaje enviado con éxito!';
-            
-            setTimeout(() => {
-                respuesta.style.display = 'none';
-            }, 5000); // El mensaje de éxito se oculta después de 5 segundos
-            
-        } else {
-            // ❌ SI el servidor (Formspree) responde con un error (estado HTTP 4xx, 5xx),
-            // ENTONCES, se ejecuta este bloque:
-            const errorData = await respuestaFetch.json(); // Intenta leer el mensaje de error de Formspree
-            console.error('Error al enviar el formulario (respuesta no OK):', respuestaFetch.status, errorData);
-            respuesta.style.display = 'block';
-            respuesta.style.color = 'red';
-            respuesta.textContent = `❌ Ocurrió un error: ${errorData.error || 'Intente nuevamente.'}`;
-        }
-    } catch (error) {
-        // Este bloque captura errores de red (por ejemplo, si el usuario está offline)
-        console.error('Error en la solicitud Fetch:', error);
-        respuesta.style.display = 'block';
-        respuesta.style.color = 'red';
-        respuesta.textContent = '❌ Error de conexión. Verifique su red e intente de nuevo.';
-    }
-});
