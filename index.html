@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+    <nav class="navbar">
+            <button class="hamburger" aria-label="Abrir menú de navegación">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#acerca" class="nav-link">Acerca de</a></li>
+                <li><a href="#servicios" class="nav-link">Servicios</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+        </nav>
 <body>
     <a href="https://api.whatsapp.com/send?phone=50683335665&text=Hola!%20%F0%9F%91%8B%0AMe%20gustar%C3%ADa%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.%20%C2%BFMe%20pueden%20ayudar%3F%20Gracias!%20%F0%9F%98%8A" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
@@ -37,6 +50,21 @@
             </nav>
         </div>
     </header>
+    
+    <main>
+        <section id="inicio" style="height: 100vh; background-color: lightblue; display: flex; justify-content: center; align-items: center;">
+            <h1>Bienvenido a Inicio</h1>
+        </section>
+        <section id="acerca" style="height: 100vh; background-color: lightcoral; display: flex; justify-content: center; align-items: center;">
+            <h1>Acerca de Nosotros</h1>
+        </section>
+        <section id="servicios" style="height: 100vh; background-color: lightgreen; display: flex; justify-content: center; align-items: center;">
+            <h1>Nuestros Servicios</h1>
+        </section>
+        <section id="contacto" style="height: 100vh; background-color: lightyellow; display: flex; justify-content: center; align-items: center;">
+            <h1>Contáctanos</h1>
+        </section>
+    </main>
 
     <section class="hero" id="inicio">
         <div class="hero-content">
@@ -477,6 +505,7 @@
                 respuesta.textContent = '❌ Ocurrió un error. Intente nuevamente.';
             }
         });
+        <script src="script.js"></script> 
     </script>
 </body>
 </html>
