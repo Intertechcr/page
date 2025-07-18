@@ -5,14 +5,15 @@
     --secondary: #3498db;
     --accent: #e74c3c;
     --light: #ecf0f1;
-    --dark: #2c3e50;
+    --dark: #2c3e50; /* Nota: Igual que --primary. ¿Es intencional para uso de texto oscuro? */
     --text: #333;
     --text-light: #7f8c8d;
     --white: #fff;
     --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    --transition: all 0.3s ease;
+    --transition: all 0.3s ease; /* Transición global para suavidad */
 }
 
+/* Reset básico y box-sizing */
 * {
     margin: 0;
     padding: 0;
@@ -21,10 +22,10 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    line-height: 1.6;
+    line-height: 1.6; /* Unidadless line-height es una buena práctica */
     color: var(--text);
     background-color: var(--light);
-    overflow-x: hidden;
+    overflow-x: hidden; /* Previene scroll horizontal indeseado */
 }
 
 a {
@@ -40,7 +41,7 @@ a:hover {
 img {
     max-width: 100%;
     height: auto;
-    display: block;
+    display: block; /* Elimina espacio extra debajo de las imágenes */
 }
 
 .container {
@@ -50,6 +51,7 @@ img {
     padding: 0 15px;
 }
 
+/* Botones reusables */
 .btn {
     display: inline-block;
     padding: 12px 25px;
@@ -93,6 +95,7 @@ img {
     border: 2px solid var(--primary);
     padding: 8px 20px;
     font-size: 13px;
+    transition: var(--transition); /* Asegura la transición en hover */
 }
 
 .btn-outline:hover {
@@ -100,6 +103,7 @@ img {
     color: var(--white);
 }
 
+/* Secciones generales */
 .section {
     padding: 80px 0;
 }
@@ -138,13 +142,15 @@ img {
     border-radius: 2px;
 }
 
+---
+
 /* Header y navegación */
 .header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000;
+    z-index: 1000; /* Alto z-index para estar siempre encima */
     background-color: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: var(--transition);
@@ -218,8 +224,13 @@ img {
 }
 
 .hamburger {
-    display: none;
+    display: none; /* Oculto por defecto en desktop */
     cursor: pointer;
+    /* Ajustes para el ícono de hamburguesa en sí */
+    z-index: 1001; /* Mayor que el header para que siempre sea clickeable */
+    background: none;
+    border: none;
+    padding: 10px;
 }
 
 .bar {
@@ -231,11 +242,26 @@ img {
     transition: var(--transition);
 }
 
+/* Animación del ícono de hamburguesa */
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+---
+
 /* Hero Banner */
 .hero {
     height: 100vh;
     min-height: 700px;
-    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), 
+    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), /* Capa oscura */
                 url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
     display: flex;
     align-items: center;
@@ -290,10 +316,13 @@ img {
     border-radius: 50%;
     color: var(--white);
     font-size: 18px;
-    line-height: 36px;
+    line-height: 36px; /* Ajustado para centrar el ícono verticalmente si es de 40px */
     text-align: center;
     animation: bounce 2s infinite;
     transition: var(--transition);
+    display: flex; /* Usar flexbox para centrar ícono si es necesario */
+    align-items: center;
+    justify-content: center;
 }
 
 .scroll-down:hover {
@@ -313,6 +342,8 @@ img {
         transform: translateY(-5px);
     }
 }
+
+---
 
 /* Servicios */
 .services-grid {
@@ -382,6 +413,8 @@ img {
     margin-right: 8px;
 }
 
+---
+
 /* Productos */
 .products-grid {
     display: grid;
@@ -420,13 +453,13 @@ img {
 .product-image {
     position: relative;
     overflow: hidden;
-    height: 200px;
+    height: 200px; /* Altura fija para las imágenes del producto */
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
     transition: var(--transition);
 }
 
@@ -478,7 +511,7 @@ img {
 }
 
 .product-rating {
-    color: #f39c12;
+    color: #f39c12; /* Color específico para estrellas */
     margin-bottom: 10px;
     font-size: 14px;
 }
@@ -516,6 +549,8 @@ img {
 .product-link:hover {
     color: var(--accent);
 }
+
+---
 
 /* Nosotros */
 .about-grid {
@@ -635,6 +670,8 @@ img {
     font-weight: 600;
 }
 
+---
+
 /* Contacto */
 .contact-grid {
     display: grid;
@@ -666,7 +703,7 @@ img {
     font-size: 20px;
     color: var(--secondary);
     margin-right: 20px;
-    flex-shrink: 0;
+    flex-shrink: 0; /* Evita que el ícono se encoja */
 }
 
 .info-content h3 {
@@ -742,7 +779,7 @@ img {
     padding: 12px 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-family: inherit;
+    font-family: inherit; /* Hereda la fuente del body */
     font-size: 16px;
     transition: var(--transition);
 }
@@ -765,11 +802,13 @@ img {
     width: 100%;
 }
 
+---
+
 /* Footer */
 .footer {
     background-color: var(--primary);
     color: var(--white);
-    padding: 80px 0 0;
+    padding: 80px 0 0; /* Padding inferior se manejará con footer-bottom */
 }
 
 .footer-grid {
@@ -897,6 +936,8 @@ img {
     color: var(--secondary);
 }
 
+---
+
 /* Botón WhatsApp */
 .whatsapp-float {
     position: fixed;
@@ -923,6 +964,8 @@ img {
     box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
 }
 
+---
+
 /* Responsive */
 @media (max-width: 992px) {
     .about-grid,
@@ -931,7 +974,7 @@ img {
     }
     
     .about-image {
-        order: -1;
+        order: -1; /* Mueve la imagen de "Nosotros" arriba en móviles */
     }
     
     .hero-title {
@@ -945,32 +988,22 @@ img {
 
 @media (max-width: 768px) {
     .hamburger {
-        display: block;
-    }
-    
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-    
-    .hamburger.active .bar:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-    
-    .hamburger.active .bar:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        display: block; /* Muestra el ícono de hamburguesa en pantallas pequeñas */
     }
     
     .nav-menu {
         position: fixed;
-        top: 80px;
+        top: 80px; /* Considerar ajustar si el header cambia de altura */
         left: -100%;
         width: 100%;
+        height: calc(100% - 80px); /* Ocupa el resto de la altura */
         background-color: var(--white);
         flex-direction: column;
         align-items: center;
         padding: 30px 0;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         transition: var(--transition);
+        overflow-y: auto; /* Permite scroll si el contenido es muy largo */
     }
     
     .nav-menu.active {
@@ -987,7 +1020,7 @@ img {
     }
     
     .btn {
-        width: 100%;
+        width: 100%; /* Botones de ancho completo en móvil */
     }
     
     .hero-title {
@@ -1018,29 +1051,39 @@ img {
     
     .services-grid,
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Una columna para grids */
     }
     
     .about-stats {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Una columna para estadísticas */
     }
     
     .footer-grid {
         grid-template-columns: 1fr;
-        text-align: center;
+        text-align: center; /* Centrar texto del footer en móvil */
     }
     
+    .footer-logo,
+    .footer-about,
+    .footer-title,
+    .footer-links,
+    .footer-contact {
+        /* Centrar estos elementos si el texto está centrado */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .footer-title::after {
         left: 50%;
-        transform: translateX(-50%);
+        transform: translateX(-50%); /* Centra el subrayado del título del footer */
     }
     
     .footer-links a {
-        justify-content: center;
+        justify-content: center; /* Centra los iconos y texto de los enlaces del footer */
     }
     
     .footer-contact li {
-        justify-content: center;
+        justify-content: center; /* Centra los iconos y texto de contacto del footer */
     }
     
     .footer-menu {
