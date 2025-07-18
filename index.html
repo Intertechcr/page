@@ -9,23 +9,11 @@
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-    <nav class="navbar">
-            <button class="hamburger" aria-label="Abrir menú de navegación">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <ul class="nav-menu">
-                <li><a href="#inicio" class="nav-link">Inicio</a></li>
-                <li><a href="#acerca" class="nav-link">Acerca de</a></li>
-                <li><a href="#servicios" class="nav-link">Servicios</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
-        </nav>
 <body>
     <a href="https://api.whatsapp.com/send?phone=50683335665&text=Hola!%20%F0%9F%91%8B%0AMe%20gustar%C3%ADa%20solicitar%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios.%20%C2%BFMe%20pueden%20ayudar%3F%20Gracias!%20%F0%9F%98%8A" target="_blank" class="whatsapp-float">
         <i class="fab fa-whatsapp"></i>
     </a>
+
     <header class="header">
         <div class="container">
             <nav class="navbar">
@@ -52,369 +40,356 @@
     </header>
     
     <main>
-        <section id="inicio" style="height: 100vh; background-color: lightblue; display: flex; justify-content: center; align-items: center;">
-            <h1>Bienvenido a Inicio</h1>
+        <section class="hero" id="inicio">
+            <div class="hero-content">
+                <h1 class="hero-title">Venta e Instalación de <span>Soluciones Tecnológicas</span></h1>
+                <p class="hero-text">Productos de calidad y su instalación profesional en sistemas de seguridad y redes WiFi</p>
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">Cotización Inmediata <i class="fas fa-arrow-right"></i></a>
+                    <a href="#servicios" class="btn btn-secondary">Ver Servicios <i class="fas fa-bolt"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-scroll">
+                <a href="#servicios" class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
         </section>
-        <section id="acerca" style="height: 100vh; background-color: lightcoral; display: flex; justify-content: center; align-items: center;">
-            <h1>Acerca de Nosotros</h1>
+
+        <section class="section services" id="servicios">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Soluciones completas</span>
+                    <h2 class="section-title">Venta e Instalación <span>Profesional</span></h2>
+                    <div class="section-divider"></div>
+                    <p class="section-description">Ofrecemos tanto la venta de equipos de calidad como su instalación por expertos certificados</p>
+                </div>
+                
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-badge">Venta + Instalación</div>
+                        <div class="service-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="service-title">Videovigilancia</h3>
+                        <p class="service-description">Venta e instalación profesional de cámaras HD con visión nocturna y monitoreo remoto.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Venta de equipos 4K/Full HD</li>
+                            <li><i class="fas fa-check-circle"></i> Instalación de DVR/NVR</li>
+                            <li><i class="fas fa-check-circle"></i> Configuración móvil incluida</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-badge">Venta + Instalación</div>
+                        <div class="service-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3 class="service-title">Redes WiFi</h3>
+                        <p class="service-description">Venta de equipos e instalación de redes inalámbricas empresariales y residenciales.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Venta de equipos Ubiquiti</li>
+                            <li><i class="fas fa-check-circle"></i> Instalación profesional</li>
+                            <li><i class="fas fa-check-circle"></i> Optimización incluida</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="service-card">
+                        <div class="service-badge">Venta + Instalación</div>
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="service-title">Sistemas de Alarma</h3>
+                        <p class="service-description">Venta e instalación de sistemas completos con sensores y monitoreo 24/7.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Kits de alarmas completos</li>
+                            <li><i class="fas fa-check-circle"></i> Instalación certificada</li>
+                            <li><i class="fas fa-check-circle"></i> Pruebas post-instalación</li>
+                        </ul>
+                        <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </section>
-        <section id="servicios" style="height: 100vh; background-color: lightgreen; display: flex; justify-content: center; align-items: center;">
-            <h1>Nuestros Servicios</h1>
+
+        <section class="section products" id="productos">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Nuestros equipos</span>
+                    <h2 class="section-title">Productos <span>con Instalación Incluida</span></h2>
+                    <div class="section-divider"></div>
+                    <p class="section-description">Todos nuestros productos incluyen instalación profesional por técnicos certificados</p>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Más Vendido</div>
+                        <div class="product-image">
+                            <img src="img/domo.jpg" alt="Cámara Domo PTZ">
+                            <div class="product-overlay">
+                                <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Cámara Domo PTZ 4MP</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(24)</span>
+                            </div>
+                            <p class="product-description">Rotación 360°, visión nocturna 30m, resistente a intemperie.</p>
+                            <div class="product-footer">
+                                <span class="product-price">$</span>
+                                <span class="install-text">Instalación incluida</span>
+                                <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Nuevo</div>
+                        <div class="product-image">
+                            <img src="img/redes.jpg" alt="Equipo de Redes">
+                            <div class="product-overlay">
+                                <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Router WiFi Profesional</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>(18)</span>
+                            </div>
+                            <p class="product-description">Doble banda, cobertura ampliada, gestión avanzada.</p>
+                            <div class="product-footer">
+                                <span class="product-price">$</span>
+                                <span class="install-text">Instalación incluida</span>
+                                <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="img/alarma.jpg" alt="Kit de Alarma">
+                            <div class="product-overlay">
+                                <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Kit de Alarma Completo</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>(32)</span>
+                            </div>
+                            <p class="product-description">Incluye panel central, 3 sensores y sirena de 110dB.</p>
+                            <div class="product-footer">
+                                <span class="product-price">$</span>
+                                <span class="install-text">Instalación incluida</span>
+                                <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="img/gravadores.jpg" alt="Grabador Digital">
+                            <div class="product-overlay">
+                                <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title">Grabador Digital 8CH</h3>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>(15)</span>
+                            </div>
+                            <p class="product-description">Compatibilidad 4K, 2TB HDD, visualización remota.</p>
+                            <div class="product-footer">
+                                <span class="product-price">$</span>
+                                <span class="install-text">Instalación incluida</span>
+                                <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-footer">
+                    <a href="#contacto" class="btn btn-primary">Ver todos los productos <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
         </section>
-        <section id="contacto" style="height: 100vh; background-color: lightyellow; display: flex; justify-content: center; align-items: center;">
-            <h1>Contáctanos</h1>
+
+        <section class="section about" id="nosotros">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="img/pico.jpg" alt="Equipo Inter-Tech">
+                            <div class="experience-badge">
+                                <span class="years">5+</span>
+                                <span class="text">Años de Experiencia</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content">
+                        <div class="section-header">
+                            <span class="section-subtitle">Nuestra historia</span>
+                            <h2 class="section-title">Expertos en <span>Venta e Instalación</span></h2>
+                            <div class="section-divider"></div>
+                        </div>
+                        
+                        <p class="about-text">Inter-Tech Costa Rica se especializa en la **venta e instalación profesional** de equipos tecnológicos, fundada por un **ingeniero en sistemas certificado CCNA** con amplia experiencia en infraestructura de redes y seguridad.</p>
+                        
+                        <ul class="about-features">
+                            <li><i class="fas fa-check-circle"></i> **Venta de equipos:** Selección de productos de primera calidad</li>
+                            <li><i class="fas fa-check-circle"></i> **Instalación:** Realizada por técnicos certificados</li>
+                            <li><i class="fas fa-check-circle"></i> **Garantía:** Tanto en equipos como en instalación</li>
+                            <li><i class="fas fa-check-circle"></i> **Soporte:** Post-venta y post-instalación</li>
+                        </ul>
+                        
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">200+</span>
+                                <span class="stat-text">Instalaciones realizadas</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">98%</span>
+                                <span class="stat-text">Clientes satisfechos</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">24/7</span>
+                                <span class="stat-text">Soporte técnico</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact" id="contacto">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-subtitle">Estamos para ayudarte</span>
+                    <h2 class="section-title">Contacto <span>Rápido</span></h2>
+                    <div class="section-divider"></div>
+                    <p class="section-description">¿Necesitas cotizar un producto con instalación? ¡Contáctanos ahora!</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Ubicación</h3>
+                                <p>Quepos, Puntarenas, Costa Rica</p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Teléfono</h3>
+                                <p><a href="tel:+50683335665">+506 8333 5665</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Email</h3>
+                                <p><a href="mailto:intertechpacifico@gmail.com">intertechpacifico@gmail.com</a></p>
+                            </div>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="info-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="info-content">
+                                <h3>Horario</h3>
+                                <p>Lun-Vie: 8:00am - 5:00pm</p>
+                                <p>Sáb: 9:00am - 12:00md</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-social">
+                            <h3>Síguenos</h3>
+                            <div class="social-links">
+                                <a href="https://www.facebook.com/intertechcr" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://wa.me/50683335665" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                                <a href="https://wa.me/50683335665" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
+                                <a href="mailto:intertechpacifico@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <form action="https://formspree.io/f/mqalalzv" method="POST" id="formularioContacto">
+                            <div class="form-group">
+                                <label for="nombre">Nombre Completo *</label>
+                                <input type="text" name="Nombre" id="nombre" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="correo">Correo Electrónico *</label>
+                                <input type="email" name="Correo" id="correo" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="telefono">Teléfono</label>
+                                <input type="tel" name="Teléfono" id="telefono">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="servicio">Servicio de Interés *</label>
+                                <select name="Servicio" id="servicio" required>
+                                    <option value="" disabled selected>Seleccione una opción</option>
+                                    <option value="Cámaras de Seguridad">Cámaras de Seguridad</option>
+                                    <option value="Redes y Wifi">Redes y Wifi</option>
+                                    <option value="Soporte Técnico">Soporte Técnico</option>
+                                    <option value="Otros">Otros</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="mensaje">Mensaje *</label>
+                                <textarea name="Mensaje" id="mensaje" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+                            <p id="respuesta" style="color: green; display: none; margin-top: 10px; font-weight: bold;">✅ ¡Mensaje enviado con éxito!</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-
-    <section class="hero" id="inicio">
-        <div class="hero-content">
-            <h1 class="hero-title">Venta e Instalación de <span>Soluciones Tecnológicas</span></h1>
-            <p class="hero-text">Productos de calidad y su instalación profesional en sistemas de seguridad y redes WiFi</p>
-            <div class="hero-buttons">
-                <a href="#contacto" class="btn btn-primary">Cotización Inmediata <i class="fas fa-arrow-right"></i></a>
-                <a href="#servicios" class="btn btn-secondary">Ver Servicios <i class="fas fa-bolt"></i></a>
-            </div>
-        </div>
-        
-        <div class="hero-scroll">
-            <a href="#servicios" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </a>
-        </div>
-    </section>
-
-    <section class="section services" id="servicios">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Soluciones completas</span>
-                <h2 class="section-title">Venta e Instalación <span>Profesional</span></h2>
-                <div class="section-divider"></div>
-                <p class="section-description">Ofrecemos tanto la venta de equipos de calidad como su instalación por expertos certificados</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-badge">Venta + Instalación</div>
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="service-title">Videovigilancia</h3>
-                    <p class="service-description">Venta e instalación profesional de cámaras HD con visión nocturna y monitoreo remoto.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Venta de equipos 4K/Full HD</li>
-                        <li><i class="fas fa-check-circle"></i> Instalación de DVR/NVR</li>
-                        <li><i class="fas fa-check-circle"></i> Configuración móvil incluida</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-badge">Venta + Instalación</div>
-                    <div class="service-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h3 class="service-title">Redes WiFi</h3>
-                    <p class="service-description">Venta de equipos e instalación de redes inalámbricas empresariales y residenciales.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Venta de equipos Ubiquiti</li>
-                        <li><i class="fas fa-check-circle"></i> Instalación profesional</li>
-                        <li><i class="fas fa-check-circle"></i> Optimización incluida</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-badge">Venta + Instalación</div>
-                    <div class="service-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="service-title">Sistemas de Alarma</h3>
-                    <p class="service-description">Venta e instalación de sistemas completos con sensores y monitoreo 24/7.</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check-circle"></i> Kits de alarmas completos</li>
-                        <li><i class="fas fa-check-circle"></i> Instalación certificada</li>
-                        <li><i class="fas fa-check-circle"></i> Pruebas post-instalación</li>
-                    </ul>
-                    <a href="#contacto" class="btn btn-outline">Consultar <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section products" id="productos">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Nuestros equipos</span>
-                <h2 class="section-title">Productos <span>con Instalación Incluida</span></h2>
-                <div class="section-divider"></div>
-                <p class="section-description">Todos nuestros productos incluyen instalación profesional por técnicos certificados</p>
-            </div>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-badge">Más Vendido</div>
-                    <div class="product-image">
-                        <img src="img/domo.jpg" alt="Cámara Domo PTZ">
-                        <div class="product-overlay">
-                            <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Cámara Domo PTZ 4MP</h3>
-                        <div class="product-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(24)</span>
-                        </div>
-                        <p class="product-description">Rotación 360°, visión nocturna 30m, resistente a intemperie.</p>
-                        <div class="product-footer">
-                            <span class="product-price">$</span>
-                            <span class="install-text">Instalación incluida</span>
-                            <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-badge">Nuevo</div>
-                    <div class="product-image">
-                        <img src="img/redes.jpg" alt="Equipo de Redes">
-                        <div class="product-overlay">
-                            <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Router WiFi Profesional</h3>
-                        <div class="product-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                            <span>(18)</span>
-                        </div>
-                        <p class="product-description">Doble banda, cobertura ampliada, gestión avanzada.</p>
-                        <div class="product-footer">
-                            <span class="product-price">$</span>
-                            <span class="install-text">Instalación incluida</span>
-                            <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="img/alarma.jpg" alt="Kit de Alarma">
-                        <div class="product-overlay">
-                            <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Kit de Alarma Completo</h3>
-                        <div class="product-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <span>(32)</span>
-                        </div>
-                        <p class="product-description">Incluye panel central, 3 sensores y sirena de 110dB.</p>
-                        <div class="product-footer">
-                            <span class="product-price">$</span>
-                            <span class="install-text">Instalación incluida</span>
-                            <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="img/gravadores.jpg" alt="Grabador Digital">
-                        <div class="product-overlay">
-                            <a href="#contacto" class="product-btn">Consultar <i class="fas fa-shopping-cart"></i></a>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3 class="product-title">Grabador Digital 8CH</h3>
-                        <div class="product-rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                            <span>(15)</span>
-                        </div>
-                        <p class="product-description">Compatibilidad 4K, 2TB HDD, visualización remota.</p>
-                        <div class="product-footer">
-                            <span class="product-price">$</span>
-                            <span class="install-text">Instalación incluida</span>
-                            <a href="#contacto" class="product-link">Ver detalles <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="section-footer">
-                <a href="#contacto" class="btn btn-primary">Ver todos los productos <i class="fas fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="section about" id="nosotros">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-image">
-                    <div class="image-wrapper">
-                        <img src="img/pico.jpg" alt="Equipo Inter-Tech">
-                        <div class="experience-badge">
-                            <span class="years">5+</span>
-                            <span class="text">Años de Experiencia</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-content">
-                    <div class="section-header">
-                        <span class="section-subtitle">Nuestra historia</span>
-                        <h2 class="section-title">Expertos en <span>Venta e Instalación</span></h2>
-                        <div class="section-divider"></div>
-                    </div>
-                    
-                    <p class="about-text">Inter-Tech Costa Rica se especializa en la <strong>venta e instalación profesional</strong> de equipos tecnológicos, fundada por un <strong>ingeniero en sistemas certificado CCNA</strong> con amplia experiencia en infraestructura de redes y seguridad.</p>
-                    
-                    <ul class="about-features">
-                        <li><i class="fas fa-check-circle"></i> <strong>Venta de equipos:</strong> Selección de productos de primera calidad</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Instalación:</strong> Realizada por técnicos certificados</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Garantía:</strong> Tanto en equipos como en instalación</li>
-                        <li><i class="fas fa-check-circle"></i> <strong>Soporte:</strong> Post-venta y post-instalación</li>
-                    </ul>
-                    
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">200+</span>
-                            <span class="stat-text">Instalaciones realizadas</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">98%</span>
-                            <span class="stat-text">Clientes satisfechos</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">24/7</span>
-                            <span class="stat-text">Soporte técnico</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section contact" id="contacto">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Estamos para ayudarte</span>
-                <h2 class="section-title">Contacto <span>Rápido</span></h2>
-                <div class="section-divider"></div>
-                <p class="section-description">¿Necesitas cotizar un producto con instalación? ¡Contáctanos ahora!</p>
-            </div>
-            
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Ubicación</h3>
-                            <p>Quepos, Puntarenas, Costa Rica</p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Teléfono</h3>
-                            <p><a href="tel:+50683335665">+506 8333 5665</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Email</h3>
-                            <p><a href="mailto:intertechpacifico@gmail.com">intertechpacifico@gmail.com</a></p>
-                        </div>
-                    </div>
-                    
-                    <div class="info-card">
-                        <div class="info-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="info-content">
-                            <h3>Horario</h3>
-                            <p>Lun-Vie: 8:00am - 5:00pm</p>
-                            <p>Sáb: 9:00am - 12:00md</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-social">
-                        <h3>Síguenos</h3>
-                        <div class="social-links">
-                            <a href="https://www.facebook.com/intertechcr" target="_blank" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                            <a href="https://wa.me/50683335665" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                            <a href="https://wa.me/50683335665" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
-                            <a href="mailto:intertechpacifico@gmail.com" class="social-link"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form action="https://formspree.io/f/mqalalzv" method="POST" id="formularioContacto">
-                        <div class="form-group">
-                            <label for="nombre">Nombre Completo *</label>
-                            <input type="text" name="Nombre" id="nombre" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="correo">Correo Electrónico *</label>
-                            <input type="email" name="Correo" id="correo" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <input type="tel" name="Teléfono" id="telefono">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="servicio">Servicio de Interés *</label>
-                            <select name="Servicio" id="servicio" required>
-                                <option value="" disabled selected>Seleccione una opción</option>
-                                <option value="Cámaras de Seguridad">Cámaras de Seguridad</option>
-                                <option value="Redes y Wifi">Redes y Wifi</option>
-                                <option value="Soporte Técnico">Soporte Técnico</option>
-                                <option value="Otros">Otros</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="mensaje">Mensaje *</label>
-                            <textarea name="Mensaje" id="mensaje" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-block">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
-                        <p id="respuesta" style="color: green; display: none; margin-top: 10px; font-weight: bold;">✅ ¡Mensaje enviado con éxito!</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <footer class="footer">
         <div class="container">
@@ -477,35 +452,6 @@
         </div>
     </footer>
 
-    <script>
-        const formulario = document.getElementById('formularioContacto');
-        const respuesta = document.getElementById('respuesta');
-
-        formulario.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const datos = new FormData(formulario);
-            const respuestaFetch = await fetch(formulario.action, {
-                method: 'POST',
-                body: datos,
-                headers: { 'Accept': 'application/json' }
-            });
-
-            if (respuestaFetch.ok) {
-                formulario.reset();
-                respuesta.style.display = 'block';
-                respuesta.style.color = 'green';
-                respuesta.textContent = '✅ ¡Mensaje enviado con éxito!';
-                // Ocultar el mensaje después de unos segundos
-                setTimeout(() => {
-                    respuesta.style.display = 'none';
-                }, 5000); 
-            } else {
-                respuesta.style.display = 'block';
-                respuesta.style.color = 'red';
-                respuesta.textContent = '❌ Ocurrió un error. Intente nuevamente.';
-            }
-        });
-        <script src="script.js"></script> 
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
