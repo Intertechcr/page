@@ -12,7 +12,9 @@ formulario.addEventListener('submit', async function (e) {
     });
 
     if (respuestaFetch.ok) {
-        formulario.reset();
+        // Esta línea limpia el formulario al restablecer todos sus campos a sus valores iniciales.
+        formulario.reset(); 
+        
         respuesta.style.display = 'block';
         respuesta.style.color = 'green';
         respuesta.textContent = '✅ ¡Mensaje enviado con éxito!';
