@@ -1,2357 +1,713 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inter-Tech Costa Rica - Soluciones Tecnológicas Profesionales</title>
-    
-    <!-- Font Awesome 6 (iconos) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght=300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ===== VARIABLES GLOBALES ===== */
-        :root {
-            --primary: #0056b3;
-            --primary-dark: #004494;
-            --secondary: #ff6b00;
-            --secondary-dark: #e05a00;
-            --dark: #1a1a1a;
-            --dark-gray: #333;
-            --gray: #6c757d;
-            --light-gray: #e9ecef;
-            --light: #f8f9fa;
-            --white: #ffffff;
-            --success: #28a745;
-            --danger: #dc3545;
-            --warning: #ffc107;
-            --info: #17a2b8;
-            
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 5px 15px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
-            --shadow-hover: 0 15px 30px rgba(0,0,0,0.15);
-            
-            --transition: all 0.3s ease;
-            --border-radius: 8px;
-            --border-radius-lg: 12px;
-        }
-        
-        /* ===== RESET Y ESTILOS BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: var(--dark-gray);
-            background-color: var(--white);
-            overflow-x: hidden;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            line-height: 1.3;
-            margin-bottom: 1rem;
-            color: var(--dark);
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        a {
-            text-decoration: none;
-            color: inherit;
-            transition: var(--transition);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        
-        .section-sm {
-            padding: 50px 0;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.4rem;
-            color: var(--primary);
-            display: inline-block;
-            position: relative;
-            margin-bottom: 15px;
-        }
-        
-        .section-title h2:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            font-size: 1.1rem;
-            color: var(--gray);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        /* ===== BOTONES ===== */
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            border: 2px solid transparent;
-        }
-        
-        .btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .btn-secondary {
-            background-color: var(--secondary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--secondary-dark);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            transform: translateY(-2px);
-        }
-        
-        .btn-sm {
-            padding: 8px 20px;
-            font-size: 0.9rem;
-        }
-        
-        .btn-lg {
-            padding: 15px 35px;
-            font-size: 1.1rem;
-        }
-        
-        /* ===== HEADER ===== */
-        .top-bar {
-            background-color: var(--dark);
-            color: var(--white);
-            padding: 10px 0;
-            font-size: 0.9rem;
-        }
-        
-        .top-bar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .contact-info span {
-            margin-right: 25px;
-        }
-        
-        .contact-info i {
-            margin-right: 8px;
-            color: var(--secondary);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 35px;
-            height: 35px;
-            background-color: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            color: var(--white);
-            transition: var(--transition);
-        }
-        
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-        
-        .main-header {
-            background-color: var(--white);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 15px 0;
-        }
-        
-        .main-header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-right: 10px;
-        }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-bottom: 0;
-            color: var(--primary);
-        }
-        
-        .logo span {
-            color: var(--secondary);
-        }
-        
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .nav-list {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-        
-        .nav-list a {
-            font-weight: 500;
-            position: relative;
-        }
-        
-        .nav-list a:hover,
-        .nav-list a.active {
-            color: var(--primary);
-        }
-        
-        .nav-list a:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary);
-            transition: var(--transition);
-        }
-        
-        .nav-list a:hover:after,
-        .nav-list a.active:after {
-            width: 100%;
-        }
-        
-        .cart-icon {
-            position: relative;
-            cursor: pointer;
-            font-size: 1.3rem;
-            color: var(--primary);
-        }
-        
-        .cart-count {
-            position: absolute;
-            top: -8px;
-            right: -8px;
-            background-color: var(--secondary);
-            color: var(--white);
-            font-size: 0.7rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            color: var(--primary);
-            cursor: pointer;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        .hero {
-            background: linear-gradient(135deg, rgba(0,86,179,0.95) 0%, rgba(0,68,148,0.95) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: var(--white);
-            padding: 120px 0;
-            text-align: center;
-        }
-        
-        .hero h2 {
-            font-size: 3.2rem;
-            color: var(--white);
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-        
-        .hero .btn {
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Instalación y mantenimiento de cámaras de seguridad, Internet, redes, monitoreo y soporte TI en el Pacífico Central y Sur de Costa Rica."
+    />
+    <meta
+      name="keywords"
+      content="cámaras de seguridad Costa Rica, instalación de cámaras, cámaras CCTV, videovigilancia, monitoreo remoto, Internet Costa Rica, redes WiFi, mantenimiento preventivo cámaras, seguridad electrónica, Quepos, Manuel Antonio, Uvita, Dominical, Jacó, Pacífico Central, Pacífico Sur"
+    />
+    <meta name="author" content="Ing. Roy Azofeifa · Inter-Tech Costa Rica" />
+    <meta
+      name="robots"
+      content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"
+    />
+    <meta name="geo.region" content="CR-P" />
+    <meta name="geo.placename" content="Quepos, Puntarenas, Costa Rica" />
+    <link rel="canonical" href="https://intertechcostarica.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:site_name" content="Inter-Tech Costa Rica" />
+    <meta property="og:url" content="https://intertechcostarica.com/" />
+    <meta
+      property="og:title"
+      content="Cámaras, Internet y seguridad en Costa Rica | Inter-Tech"
+    />
+    <meta
+      property="og:description"
+      content="Instalación, revisión, monitoreo y mantenimiento preventivo para viviendas, hoteles, comercios y proyectos en el Pacífico de Costa Rica."
+    />
+    <meta
+      property="og:image"
+      content="https://intertechcostarica.com/assets/hero-uvita.png"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Inter-Tech Costa Rica · Seguridad, cámaras e Internet"
+    />
+    <meta
+      name="twitter:description"
+      content="Soluciones profesionales de videovigilancia, conectividad, redes y soporte técnico en Costa Rica."
+    />
+    <meta
+      name="twitter:image"
+      content="https://intertechcostarica.com/assets/hero-uvita.png"
+    />
+    <title>Cámaras, Internet y Seguridad en Costa Rica | Inter-Tech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="refinements.css?v=6" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": ["LocalBusiness", "ProfessionalService"],
+            "@id": "https://intertechcostarica.com/#intertech",
+            "name": "Inter-Tech Costa Rica",
+            "alternateName": "InterTechCostaRica",
+            "url": "https://intertechcostarica.com/",
+            "sameAs": [
+              "https://www.facebook.com/intertechcostarica",
+              "https://www.instagram.com/inter_techcostarica/"
+            ],
+            "description": "Empresa costarricense de instalación, revisión, monitoreo y mantenimiento preventivo de cámaras de seguridad, redes, Internet, Wi-Fi, failover y soporte TI.",
+            "telephone": "+50683335665",
+            "email": "intertechpacifico@gmail.com",
+            "image": "https://intertechcostarica.com/assets/hero-uvita.png",
+            "founder": { "@type": "Person", "name": "Ing. Roy Azofeifa" },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Quepos",
+              "addressRegion": "Puntarenas",
+              "addressCountry": "CR"
+            },
+            "areaServed": [
+              {
+                "@type": "AdministrativeArea",
+                "name": "Pacífico Central de Costa Rica"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Pacífico Sur de Costa Rica"
+              },
+              {
+                "@type": "AdministrativeArea",
+                "name": "Pacífico Norte de Costa Rica"
+              }
+            ],
+            "knowsLanguage": ["es", "en"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+50683335665",
+              "contactType": "sales and technical support",
+              "availableLanguage": ["Spanish", "English"],
+              "areaServed": "CR"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicios de seguridad y conectividad",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Instalación de cámaras de seguridad y CCTV"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Monitoreo remoto y videovigilancia"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Revisión y mantenimiento preventivo de cámaras"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Instalación de Internet, Wi-Fi y redes profesionales"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Failover y respaldo automático de Internet"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Soporte técnico e infraestructura TI"
+                  }
+                }
+              ]
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* ===== PRODUCTS GRID ===== */
-        .filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 40px;
-        }
-        
-        .filter-btn {
-            padding: 10px 25px;
-            background-color: var(--light);
-            border: 1px solid var(--light-gray);
-            border-radius: 30px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: var(--transition);
-        }
-        
-        .filter-btn:hover,
-        .filter-btn.active {
-            background-color: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-        
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
-        }
-        
-        .product-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            position: relative;
-            border: 1px solid var(--light-gray);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .supplier-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            z-index: 3;
-            padding: 7px 12px;
-            border-radius: 999px;
-            color: #fff;
-            background: rgba(0, 68, 148, .92);
-            box-shadow: 0 8px 20px rgba(0,0,0,.18);
-            font-size: .72rem;
-            font-weight: 700;
-            letter-spacing: .07em;
-            text-transform: uppercase;
-        }
-
-        .supplier-badge.sekunet { background: rgba(255, 107, 0, .94); }
-        
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .product-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: var(--secondary);
-            color: var(--white);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 2;
-        }
-        
-        .product-img {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-            background-color: var(--light);
-        }
-        
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 18px;
-            transition: var(--transition);
-        }
-        
-        .product-card:hover .product-img img {
-            transform: scale(1.08);
-        }
-        
-        .product-info {
-            padding: 25px 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-        
-        .product-category {
-            display: inline-block;
-            background-color: var(--light);
-            color: var(--gray);
-            font-size: 0.8rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            margin-bottom: 12px;
-        }
-        
-        .product-info h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            height: 50px;
-            overflow: hidden;
-        }
-        
-        .product-description {
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        
-        .product-price {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
-        .product-actions {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: auto;
-        }
-        
-        .product-actions .btn {
-            flex: 1;
-            padding: 10px;
-            font-size: 0.9rem;
-        }
-
-        .product-actions .contact-product { grid-column: 1 / -1; background: #20b877; color: #fff; }
-        .catalog-note { max-width: 780px; margin: -25px auto 32px; text-align: center; color: var(--gray); }
-        .catalog-source { display:inline-flex; gap:8px; align-items:center; font-size:.8rem; color:var(--primary); margin-bottom:16px; }
-        
-        /* ===== BRANDS SECTION ===== */
-        .brands {
-            background-color: var(--light);
-            padding: 60px 0;
-        }
-        
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 30px;
-            align-items: center;
-        }
-        
-        .brand-item {
-            background-color: var(--white);
-            padding: 25px;
-            border-radius: var(--border-radius);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            height: 120px;
-            transition: var(--transition);
-        }
-        
-        .brand-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .brand-item img {
-            max-width: 100%;
-            max-height: 70px;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: var(--transition);
-        }
-        
-        .brand-item:hover img {
-            filter: grayscale(0);
-            opacity: 1;
-        }
-        
-        /* ===== RUIJIE SECTION ===== */
-        .ruijie-section {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .section-header img {
-            height: 50px;
-        }
-        
-        .ruijie-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-        
-        .ruijie-card {
-            background-color: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-        }
-        
-        .ruijie-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .ruijie-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .ruijie-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-        
-        .ruijie-card:hover .ruijie-img img {
-            transform: scale(1.08);
-        }
-        
-        .ruijie-content {
-            padding: 25px;
-        }
-        
-        .ruijie-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-        
-        .ruijie-content p {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
-        
-        .ruijie-features {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .ruijie-features h3 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-        }
-        
-        .ruijie-features ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        
-        .ruijie-features li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-        }
-        
-        .ruijie-features i {
-            color: var(--secondary);
-            font-size: 1.2rem;
-        }
-        /* ===== CONTROL DE IMÁGENES ===== */
-/* Para que todas las imágenes se vean del tamaño correcto */
-.ruijie-img, .product-img, .camera-item img, .cart-item-img {
-    position: relative;
-    overflow: hidden;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.ruijie-img img, .product-img img, .camera-item img, .cart-item-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: transform 0.3s ease;
-}
-
-.ruijie-img:hover img, .product-img:hover img, .camera-item:hover img {
-    transform: scale(1.05);
-}
-        /* ===== CAMERAS SECTION ===== */
-        .cameras-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        
-        .camera-brand {
-            background-color: var(--white);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .camera-header {
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .camera-header img {
-            height: 50px;
-            margin: 0 auto 15px;
-        }
-        
-        .camera-header h3 {
-            font-size: 1.4rem;
-            margin-bottom: 5px;
-        }
-        
-        .camera-items {
-            padding: 20px;
-        }
-        
-        .camera-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .camera-item:last-child {
-            border-bottom: none;
-        }
-        
-        .camera-item img {
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-        }
-        
-        .camera-info h4 {
-            font-size: 1rem;
-            margin-bottom: 5px;
-        }
-        
-        .camera-info p {
-            font-size: 0.9rem;
-            color: var(--gray);
-            margin-bottom: 5px;
-        }
-        
-        .camera-price {
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        /* ===== QUOTE SECTION - CORREGIDO ===== */
-        .quote-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: var(--white);
-        }
-        
-        .quote-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .quote-container h2 {
-            color: var(--white);
-        }
-        
-        .quote-container .section-title p {
-            color: rgba(255,255,255,0.9);
-        }
-        
-        .quote-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .quote-products {
-            margin-bottom: 30px;
-        }
-        
-        .quote-products h3 {
-            color: var(--dark);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-        
-        .quote-products-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-height: 350px;
-            overflow-y: auto;
-            padding: 15px;
-            border: 2px solid var(--light-gray);
-            border-radius: var(--border-radius);
-            background-color: var(--white);
-        }
-        
-        /* ESTILOS CORREGIDOS PARA LOS PRODUCTOS DE COTIZACIÓN */
-        .quote-product-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 15px;
-            background-color: var(--light);
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            transition: var(--transition);
-            border: 2px solid transparent;
-        }
-        
-        .quote-product-item:hover {
-            background-color: var(--light-gray);
-            border-color: var(--secondary);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-sm);
-        }
-        
-        .quote-product-item.selected {
-            background-color: rgba(0,86,179,0.08);
-            border-color: var(--primary);
-        }
-        
-        .quote-product-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            accent-color: var(--secondary);
-            flex-shrink: 0;
-        }
-        
-        .quote-product-item label {
-            flex: 1;
-            font-size: 0.95rem;
-            font-weight: 500;
-            cursor: pointer;
-            color: var(--dark-gray); /* Texto más oscuro para mejor contraste */
-            line-height: 1.4;
-            transition: var(--transition);
-        }
-        
-        .quote-product-item:hover label {
-            color: var(--primary); /* Cambia a color primario en hover */
-        }
-        
-        .quote-product-item.selected label {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        /* Scroll personalizado para la lista de productos */
-        .quote-products-grid::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .quote-products-grid::-webkit-scrollbar-track {
-            background: var(--light);
-            border-radius: 10px;
-        }
-        
-        .quote-products-grid::-webkit-scrollbar-thumb {
-            background: var(--secondary);
-            border-radius: 10px;
-        }
-        
-        .quote-products-grid::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-dark);
-        }
-        
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            color: var(--dark);
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid var(--light-gray);
-            border-radius: var(--border-radius);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(0,86,179,0.1);
-        }
-        
-        /* ===== ABOUT SECTION ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-        
-        .about-text h2 {
-            color: var(--primary);
-            font-size: 2.2rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .feature-item {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255,107,0,0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--secondary);
-            font-size: 1.3rem;
-        }
-        
-        .feature-text h4 {
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-        
-        .feature-text p {
-            color: var(--gray);
-            font-size: 0.9rem;
-        }
-        
-        .about-image img {
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        /* ===== FOOTER ===== */
-        .footer {
-            background-color: var(--dark);
-            color: #aaa;
-            padding: 70px 0 20px;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .footer-col h3 {
-            color: var(--white);
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 40px;
-            height: 2px;
-            background-color: var(--secondary);
-        }
-        
-        .footer-col p {
-            margin-bottom: 20px;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-col ul li a {
-            color: #aaa;
-            transition: var(--transition);
-        }
-        
-        .footer-col ul li a:hover {
-            color: var(--secondary);
-            padding-left: 5px;
-        }
-        
-        .footer-contact li {
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        
-        .footer-contact i {
-            color: var(--secondary);
-            width: 20px;
-            margin-top: 3px;
-        }
-        
-        .footer-form input,
-        .footer-form textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            background-color: #333;
-            border: 1px solid #444;
-            border-radius: var(--border-radius);
-            color: var(--white);
-        }
-        
-        .footer-form input:focus,
-        .footer-form textarea:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-        
-        .footer-form button {
-            width: 100%;
-            background-color: var(--secondary);
-        }
-        
-        .footer-form button:hover {
-            background-color: var(--secondary-dark);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            font-size: 0.9rem;
-        }
-        
-        /* ===== CART MODAL ===== */
-        .cart-modal {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 380px;
-            height: 100%;
-            background-color: var(--white);
-            box-shadow: -5px 0 25px rgba(0,0,0,0.15);
-            z-index: 1100;
-            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .cart-modal.open {
-            right: 0;
-        }
-        
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px;
-            background-color: var(--primary);
-            color: var(--white);
-        }
-        
-        .cart-header h3 {
-            color: var(--white);
-            margin: 0;
-        }
-        
-        .close-cart {
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .close-cart:hover {
-            transform: rotate(90deg);
-        }
-        
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-        }
-        
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .cart-item-img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-            border-radius: var(--border-radius);
-        }
-        
-        .cart-item-info {
-            flex: 1;
-        }
-        
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 0.95rem;
-        }
-        
-        .cart-item-price {
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        
-        .cart-item-actions {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .quantity-btn {
-            width: 28px;
-            height: 28px;
-            border: 1px solid var(--light-gray);
-            background-color: var(--light);
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-        
-        .quantity-btn:hover {
-            background-color: var(--primary);
-            color: var(--white);
-            border-color: var(--primary);
-        }
-        
-        .item-quantity {
-            font-weight: 600;
-            min-width: 25px;
-            text-align: center;
-        }
-        
-        .remove-item {
-            background: none;
-            border: none;
-            color: var(--danger);
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: var(--transition);
-        }
-        
-        .remove-item:hover {
-            transform: scale(1.1);
-        }
-        
-        .cart-footer {
-            padding: 20px;
-            background-color: var(--light);
-            border-top: 1px solid var(--light-gray);
-        }
-        
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-        }
-        
-        .cart-actions {
-            display: flex;
-            gap: 10px;
-        }
-        
-        .cart-actions .btn {
-            flex: 1;
-        }
-        
-        .cart-empty {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--gray);
-        }
-        
-        .cart-empty i {
-            font-size: 4rem;
-            margin-bottom: 15px;
-            color: var(--light-gray);
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 1050;
-            display: none;
-            backdrop-filter: blur(3px);
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        /* ===== WHATSAPP BUTTON ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
-            color: var(--white);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            text-decoration: none;
-            z-index: 1000;
-            transition: var(--transition);
-            animation: pulse 2s infinite;
-        }
-        
-        .whatsapp-float:hover {
-            transform: scale(1.15);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-        
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 1024px) {
-            .ruijie-grid,
-            .cameras-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .top-bar {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 80px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 80px);
-                background-color: var(--white);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding: 40px;
-                transition: left 0.3s ease;
-                z-index: 999;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-list {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .nav-list a {
-                font-size: 1.2rem;
-            }
-            
-            .hero h2 {
-                font-size: 2.4rem;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-            }
-            
-            .about-grid,
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .ruijie-features ul {
-                grid-template-columns: 1fr;
-            }
-            
-            .quote-products-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .cart-modal {
-                width: 100%;
-                right: -100%;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .ruijie-grid,
-            .cameras-grid,
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .product-actions {
-                flex-direction: column;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                font-size: 28px;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- TOP BAR -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="contact-info">
-                <span><i class="fas fa-phone"></i> (506) 8333-5665</span>
-                <span><i class="fas fa-envelope"></i> intertechpacifico@gmail.com</span>
-                <span><i class="fas fa-clock"></i> Lun-Vie: 8am-5pm</span>
-            </div>
-            <div class="social-links">
-                <a href="https://www.facebook.com/intertechcostarica" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://wa.me/50683335665?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20sus%20productos" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://inter-techcostarica.taplink.bio" target="_blank"><i class="fas fa-link"></i></a>
-            </div>
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://intertechcostarica.com/#website",
+            "url": "https://intertechcostarica.com/",
+            "name": "Inter-Tech Costa Rica",
+            "alternateName": ["InterTech Costa Rica", "InterTechCostaRica"],
+            "publisher": { "@id": "https://intertechcostarica.com/#intertech" },
+            "inLanguage": ["es-CR", "en-US"]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="topbar" id="inicio">
+      <a
+        class="brand"
+        href="#inicio"
+        aria-label="Inter-Tech Costa Rica, inicio"
+      >
+        <span class="brand-mark">IT</span
+        ><span>Inter-Tech <em>Costa Rica</em></span>
+      </a>
+      <button class="menu" aria-label="Abrir menú" aria-expanded="false">
+        Menú
+      </button>
+      <nav>
+        <a href="#trayectoria">Trayectoria</a><a href="#proyectos">Proyectos</a
+        ><a href="#soluciones">Soluciones</a
+        ><a href="#tecnologias">Tecnologías</a>
+        <a class="nav-store" href="https://intertechcr.github.io/page/"
+          >Ver tienda <span>↗</span></a
+        >
+        <div class="language-switch" role="group" aria-label="Cambiar idioma">
+          <button
+            type="button"
+            data-lang="es"
+            class="active"
+            aria-pressed="true"
+          >
+            ES</button
+          ><button type="button" data-lang="en" aria-pressed="false">EN</button>
         </div>
-    </div>
-
-    <!-- MAIN HEADER -->
-    <header class="main-header">
-        <div class="container">
-            <div class="logo">
-                <i class="fas fa-laptop-code logo-icon"></i>
-                <h1>inter-tech <span>Costa Rica</span></h1>
-            </div>
-            
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <nav class="nav-menu" id="navMenu">
-                <ul class="nav-list">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#products">Productos</a></li>
-                    <li><a href="#ruijie">Ruijie</a></li>
-                    <li><a href="#cameras">Cámaras</a></li>
-                    <li><a href="#quote">Cotizaciones</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                </ul>
-                <div class="cart-icon" id="cartIcon">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-count" id="cartCount">0</span>
-                </div>
-            </nav>
-        </div>
+      </nav>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Soluciones Tecnológicas Profesionales</h2>
-            <p>Equipos de redes, seguridad y tecnología para hogares y empresas. Asesoría especializada, instalación profesional y soporte técnico.</p>
-            <a href="#products" class="btn btn-secondary btn-lg">Ver Productos <i class="fas fa-arrow-right"></i></a>
+    <main>
+      <section class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="hero-content reveal">
+          <p class="eyebrow">Pacífico Central · Costa Rica</p>
+          <h1>La tecnología se nota<br /><span>cuando funciona.</span></h1>
+          <p class="hero-lead">
+            Diseñamos e instalamos seguridad, conectividad e infraestructura que
+            se integra al espacio y responde cuando más se necesita.
+          </p>
+          <div class="hero-actions">
+            <a
+              class="button primary"
+              href="https://wa.me/50683335665?text=Hola%2C%20quisiera%20conversar%20sobre%20un%20proyecto"
+              >Conversemos por WhatsApp</a
+            >
+            <a class="text-link" href="#proyectos"
+              >Explorar proyectos <span>↓</span></a
+            >
+          </div>
         </div>
-    </section>
+        <div class="hero-foot">
+          <span>Seguridad electrónica</span><span>Redes profesionales</span
+          ><span>Soporte TI</span>
+        </div>
+      </section>
 
-    <!-- PRODUCTS SECTION -->
-    <section class="section" id="products">
-        <div class="container">
-            <div class="section-title">
-                <h2>Catálogo profesional</h2>
-                <p>Equipos de videovigilancia seleccionados de Tectel y Sekunet</p>
-            </div>
-            <p class="catalog-note">Cada solución se prepara mediante una cotización personalizada según disponibilidad, instalación y necesidades del proyecto. Agrega los equipos al carrito y conversa directamente con el vendedor.</p>
-            
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="tectel">Tectel</button>
-                <button class="filter-btn" data-filter="sekunet">Sekunet</button>
-            </div>
-            
-            <div class="products-grid" id="productsGrid"></div>
+      <section class="statement section" id="trayectoria">
+        <div class="section-index">01</div>
+        <div class="statement-copy reveal">
+          <div>
+            <p class="eyebrow dark">Experiencia con criterio</p>
+            <p class="large-copy">
+              Cada propiedad, empresa o centro educativo tiene retos distintos.
+              Empezamos escuchando y terminamos con una instalación limpia,
+              documentada y fácil de usar.
+            </p>
+          </div>
+          <h2>Cada espacio merece<br />una solución bien pensada.</h2>
         </div>
-    </section>
+      </section>
 
-    <!-- BRANDS SECTION -->
-    <section class="brands">
-        <div class="container">
-            <div class="section-title">
-                <h2>Marcas que Representamos</h2>
-                <p>Trabajamos con los líderes de la industria tecnológica</p>
-            </div>
-            
-            <div class="brands-grid">
-                <div class="brand-item">
-                    <img src="https://brandlogos.net/wp-content/uploads/2022/02/dahua_technology-logo-brandlogo.net_-512x512.png" alt="Dahua">
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.logo.wine/a/logo/Hikvision/Hikvision-Logo.wine.svg" alt="Hikvision">
-                </div>
-                <div class="brand-item">
-                    <img src="https://www.logo.wine/a/logo/TP-Link/TP-Link-Logo.wine.svg" alt="TP-Link">
-                </div>
-                <div class="brand-item">
-                    <img src="https://play-lh.googleusercontent.com/F9XBhbIbwOStMbINTcdi1Y1zbY_hqLU2dKUBlNQu0C3D5afZhOoCTBexXF0KIFovzfU" alt="Ruijie">
-                </div>
-                <div class="brand-item">
-                    <img src="https://electrycom.com/newecv4/images/IMOU_Dahua.jpg" alt="Imou">
-                </div>
-                <div class="brand-item">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTol1-O3Yj9UsDGjDZGDqdyBSXKwVmDL2UVpw&s" alt="EZVIZ">
-                </div>
-            </div>
+      <section class="projects section dark-section" id="proyectos">
+        <div class="section-index">02</div>
+        <header class="section-heading sector-heading reveal">
+          <div>
+            <p class="eyebrow">Proyectos y escenarios</p>
+            <h2>Vea la solución<br />en su propio espacio.</h2>
+          </div>
+          <p>
+            Explore dónde se instalan los equipos, qué problema resuelven y cómo
+            se conecta cada sistema.
+          </p>
+        </header>
+        <div
+          class="sector-tabs reveal"
+          role="tablist"
+          aria-label="Escenarios de solución"
+        >
+          <button class="active" data-sector="villa" role="tab">Villa</button
+          ><button data-sector="apartment" role="tab">Apartamento</button
+          ><button data-sector="restaurant" role="tab">Restaurante</button
+          ><button data-sector="garden" role="tab">Jardín</button
+          ><button data-sector="hotel" role="tab">Hotel</button
+          ><button data-sector="gas" role="tab">Gasolinera</button>
         </div>
-    </section>
+        <article class="sector-explorer reveal">
+          <div class="sector-visual">
+            <img
+              id="sector-image"
+              src="assets/hero-uvita.png"
+              alt="Villa tropical protegida con cámaras"
+            />
+            <div id="sector-hotspots" class="sector-hotspots"></div>
+            <div class="visual-status">
+              <i></i><span id="sector-view-label">Vista de solución</span>
+            </div>
+            <div class="sector-progress"><i></i></div>
+          </div>
+          <div class="sector-content">
+            <span class="place" id="sector-place">Villa · Uvita</span>
+            <h3 id="sector-title">
+              Protección discreta para disfrutar con tranquilidad.
+            </h3>
+            <p id="sector-description">
+              Cobertura en accesos, parqueo y áreas sociales, diseñada para el
+              clima tropical y controlada desde el teléfono.
+            </p>
+            <div>
+              <p class="sector-label" id="sector-zone-label">
+                Áreas de aplicación
+              </p>
+              <div class="sector-zones" id="sector-zones"></div>
+            </div>
+            <div class="sector-benefit">
+              <span>✓</span>
+              <p id="sector-benefit">
+                Monitoreo remoto, alertas útiles y evidencia clara sin invadir
+                la arquitectura.
+              </p>
+            </div>
+          </div>
+        </article>
+        <section
+          class="motion-stories reveal"
+          aria-label="Soluciones Dahua en movimiento"
+        >
+          <header>
+            <p class="eyebrow">Soluciones en movimiento</p>
+            <h3>Vea la tecnología aplicada.</h3>
+            <p>
+              Recorridos visuales de soluciones reales, reproducidos en silencio
+              para no interrumpir su navegación.
+            </p>
+          </header>
+          <div class="motion-grid">
+            <figure class="motion-card">
+              <video
+                muted
+                loop
+                playsinline
+                preload="none"
+                poster="assets/sector-hotel.png"
+                data-src="https://materialfile.dahuasecurity.com/uploads/media/20241220/video-with-sub.mp4"
+              ></video>
+              <figcaption>
+                <span>01</span>
+                <div>
+                  <b>Protección conectada</b
+                  ><small>Espacios residenciales y comerciales</small>
+                </div>
+                <i aria-hidden="true">▶</i>
+              </figcaption>
+            </figure>
+            <figure class="motion-card">
+              <video
+                muted
+                loop
+                playsinline
+                preload="none"
+                poster="assets/sector-apartment.png"
+                data-src="https://materialfile.dahuasecurity.com/uploads/media/20241115/Comp-1-(1).mp4"
+              ></video>
+              <figcaption>
+                <span>02</span>
+                <div>
+                  <b>Visión inteligente</b
+                  ><small>Cobertura, análisis y respuesta</small>
+                </div>
+                <i aria-hidden="true">▶</i>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <div class="topology reveal">
+          <div class="topology-copy">
+            <p class="eyebrow">Topología de ejemplo</p>
+            <h3 id="topology-title">Una sola red, toda la propiedad.</h3>
+            <p id="topology-copy">
+              El grabador conserva la evidencia; el switch PoE conecta y
+              alimenta las cámaras; la aplicación permite supervisar a
+              distancia.
+            </p>
+          </div>
+          <div class="topology-flow">
+            <div class="topology-node cloud">App / Nube</div>
+            <span>↕</span>
+            <div class="topology-node core">NVR + Gateway</div>
+            <span>→</span>
+            <div class="topology-node switch">Switch PoE</div>
+            <span>→</span>
+            <div class="topology-endpoints" id="topology-endpoints"></div>
+          </div>
+        </div>
+      </section>
 
-    <!-- RUIJIE SECTION -->
-    <section class="section ruijie-section" id="ruijie">
-        <div class="container">
-            <div class="section-header">
-                <img src="https://play-lh.googleusercontent.com/F9XBhbIbwOStMbINTcdi1Y1zbY_hqLU2dKUBlNQu0C3D5afZhOoCTBexXF0KIFovzfU" alt="Ruijie">
-                <h2>Soluciones Ruijie</h2>
+      <section class="solutions section" id="soluciones">
+        <div class="section-index">03</div>
+        <header class="section-heading reveal">
+          <p class="eyebrow dark">Más que viviendas</p>
+          <h2>Una infraestructura, muchos usos.</h2>
+        </header>
+        <div class="school-panel reveal">
+          <img
+            src="assets/educacion.png"
+            alt="Centro educativo moderno con red Wi-Fi y cámaras de seguridad"
+          />
+          <div class="school-copy">
+            <span class="place">Educación · Hotelería · Comercio</span>
+            <h3>Conectar, proteger y mantener operando.</h3>
+            <p>
+              En un colegio, la misma red puede conectar laboratorios,
+              administración, cámaras y telefonía sin mezclar información
+              sensible. En un hotel o comercio, la segmentación mantiene
+              separados huéspedes, operación y seguridad.
+            </p>
+            <div class="benefit-grid">
+              <div><b>VLAN</b><span>Separa usuarios y servicios</span></div>
+              <div><b>PoE</b><span>Datos y energía por un cable</span></div>
+              <div>
+                <b>Failover</b><span>Internet de respaldo automático</span>
+              </div>
+              <div><b>Nube</b><span>Monitoreo y soporte remoto</span></div>
             </div>
-            
-            <div class="ruijie-grid">
-                <div class="ruijie-card">
-                    <div class="ruijie-img">
-                        <img src="https://rootitsupport.com/userfiles/RG-EW1300G-2.png" alt="Router Ruijie">
-                    </div>
-                    <div class="ruijie-content">
-                        <h3>Routers Profesionales</h3>
-                        <p>Routers de alto rendimiento para hogares y empresas. Tecnología WiFi 6, doble banda, control parental y gestión en la nube.</p>
-                        <p><strong>Modelos:</strong> RG-EW1300G, RG-EW1200G, RG-EW1800GX</p>
-                    </div>
-                </div>
-                
-                <div class="ruijie-card">
-                    <div class="ruijie-img">
-                        <img src="https://www.hubtech.co.ke/wp-content/uploads/Ruijie-RG-ES210GS-P.png" alt="Switch Ruijie">
-                    </div>
-                    <div class="ruijie-content">
-                        <h3>Switches Inteligentes</h3>
-                        <p>Switches gestionables PoE+ para redes empresariales. VLAN, QoS, seguridad y monitoreo centralizado.</p>
-                        <p><strong>Modelos:</strong> RG-ES105GD-P, RG-ES108GD-P, RG-ES205GC-P</p>
-                    </div>
-                </div>
-                
-                <div class="ruijie-card">
-                    <div class="ruijie-img">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyIwOFK6VjvOFXn7do9FrLNd8T7sgr_SCdCQ&s" alt="Access Point Ruijie">
-                    </div>
-                    <div class="ruijie-content">
-                        <h3>Access Points</h3>
-                        <p>Access Points de interior y exterior con tecnología WiFi 6. Cobertura extendida y alta densidad de usuarios.</p>
-                        <p><strong>Modelos:</strong> RG-AP180, RG-AP720-L, RG-AP820-L</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ruijie-features">
-                <h3>Topología de Red Profesional con Ruijie</h3>
-                <p>Diseña una red escalable y de alto rendimiento para tu empresa con equipos Ruijie. Nuestra solución incluye:</p>
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> Router principal con balanceo de carga y firewall</li>
-                    <li><i class="fas fa-check-circle"></i> Switches PoE+ para alimentar cámaras y APs</li>
-                    <li><i class="fas fa-check-circle"></i> Access Points para cobertura WiFi en toda el área</li>
-                    <li><i class="fas fa-check-circle"></i> Gestión centralizada en la nube Reyee</li>
-                    <li><i class="fas fa-check-circle"></i> VLANs para segmentar tráfico de datos, voz y video</li>
-                    <li><i class="fas fa-check-circle"></i> QoS para priorizar aplicaciones críticas</li>
-                    <li><i class="fas fa-check-circle"></i> Monitoreo en tiempo real desde cualquier dispositivo</li>
-                    <li><i class="fas fa-check-circle"></i> Escalabilidad para crecer según necesidades</li>
-                </ul>
-                <p style="margin-top: 20px;">Ideal para oficinas, hoteles, escuelas, clínicas y comercios que requieren conectividad estable y segura.</p>
-            </div>
+          </div>
         </div>
-    </section>
+        <div class="process reveal">
+          <p class="eyebrow dark">Cómo trabajamos</p>
+          <ol>
+            <li>
+              <span>01</span><b>Visita y diagnóstico</b>
+              <p>Entendemos el espacio, los riesgos y la cobertura.</p>
+            </li>
+            <li>
+              <span>02</span><b>Diseño y propuesta</b>
+              <p>Definimos equipos, ubicaciones y alcance.</p>
+            </li>
+            <li>
+              <span>03</span><b>Instalación profesional</b>
+              <p>Configuramos, probamos y documentamos.</p>
+            </li>
+            <li>
+              <span>04</span><b>Acompañamiento</b>
+              <p>Capacitamos y damos soporte cuando lo necesite.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
 
-    <!-- CAMERAS SECTION -->
-    <section class="section" id="cameras">
-        <div class="container">
-            <div class="section-title">
-                <h2>Cámaras de Seguridad</h2>
-                <p>Soluciones para todos los presupuestos y necesidades</p>
+      <section class="tech section" id="tecnologias">
+        <div class="section-index">04</div>
+        <header class="section-heading reveal">
+          <p class="eyebrow">Tecnología con propósito</p>
+          <h2>Elegimos la plataforma según el proyecto.</h2>
+        </header>
+        <div class="tech-grid">
+          <article class="tech-card featured hikvision-card reveal">
+            <img
+              src="assets/hikvision-acusense.png"
+              alt="Cámaras Hikvision AcuSense"
+            />
+            <div>
+              <span class="tech-no">01</span>
+              <h3>Hikvision</h3>
+              <p>
+                Analítica AcuSense, ColorVu y soluciones IP para proyectos que
+                requieren clasificación precisa de eventos, detalle nocturno e
+                integración escalable.
+              </p>
+              <div class="tags">
+                <span>Video inteligente</span><span>Color 24/7</span
+                ><span>Perímetro</span>
+              </div>
             </div>
-            
-            <div class="cameras-grid">
-                <!-- Dahua -->
-                <div class="camera-brand">
-                    <div class="camera-header">
-                        <img src="https://brandlogos.net/wp-content/uploads/2022/02/dahua_technology-logo-brandlogo.net_-512x512.png" alt="Dahua">
-                        <h3>Dahua</h3>
-                    </div>
-                    <div class="camera-items">
-                        <div class="camera-item">
-                            <img src="https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_180x.png?v=1767647010 180w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_360x.png?v=1767647010 360w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_540x.png?v=1767647010 540w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_720x.png?v=1767647010 720w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_900x.png?v=1767647010 900w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_1080x.png?v=1767647010 1080w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_1296x.png?v=1767647010 1296w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_1512x.png?v=1767647010 1512w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_1728x.png?v=1767647010 1728w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_1944x.png?v=1767647010 1944w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_2160x.png?v=1767647010 2160w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_2376x.png?v=1767647010 2376w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_2592x.png?v=1767647010 2592w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_2808x.png?v=1767647010 2808w, https://cdn.shopify.com/s/files/1/0269/1088/3897/files/79_1e7f8773-7b6c-4d42-b04a-a56702e2da97_3024x.png?v=1767647010 3024w" alt="Cámara Dahua">
-                            <div class="camera-info">
-                                <h4>Dahua Bullet D1</h4>
-                                <p>Cámara WiFi 2K, visión nocturna, IP67</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://www.securitydoctorscr.com/cdn/shop/products/36_7eafe313-4ffd-4e73-893f-8943b82aa008_1024x1024.png?v=1675438210" alt="Cámara Dahua">
-                            <div class="camera-info">
-                                <h4>Dahua Domo IP</h4>
-                                <p>Cámara IP 4MP, parlante, IP67</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://tectelcr.com/wp-content/uploads/2024/06/DH-H4A.jpg" alt="Cámara Dahua">
-                            <div class="camera-info">
-                                <h4>Dahua HERO PT</h4>
-                                <p>PTZ WiFi 4MP, giro/inclinación</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- HikVision -->
-                <div class="camera-brand">
-                    <div class="camera-header">
-                        <img src="https://www.logo.wine/a/logo/Hikvision/Hikvision-Logo.wine.svg" alt="Hikvision">
-                        <h3>HikVision</h3>
-                    </div>
-                    <div class="camera-items">
-                        <div class="camera-item">
-                            <img src="data:image/jpeg;base64,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" alt="Cámara Hikvision">
-                            <div class="camera-info">
-                                <h4>HikVision AcuSense</h4>
-                                <p>4MP, detección inteligente</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoBnsWMNfx5t4ZojTv_9w9o5LRvLwq3WB0dQ8ZdRLWHA&s" alt="Cámara Hikvision">
-                            <div class="camera-info">
-                                <h4>HikVision Domo</h4>
-                                <p>8MP, ColorVu, audio 2 vías</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQ0Ay-J90JQAKW7pkPhiOND-A7PGijidDb7k6RU93hqA&s=10" alt="Cámara Hikvision">
-                            <div class="camera-info">
-                                <h4>HikVision PTZ</h4>
-                                <p>4MP, zoom óptico 25x</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Imou -->
-                <div class="camera-brand">
-                    <div class="camera-header">
-                        <img src="https://electrycom.com/newecv4/images/IMOU_Dahua.jpg" alt="Imou">
-                        <h3>Imou</h3>
-                    </div>
-                    <div class="camera-items">
-                        <div class="camera-item">
-                            <img src="data:image/jpeg;base64,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" alt="Cámara Imou">
-                            <div class="camera-info">
-                                <h4>Imou Ranger 2</h4>
-                                <p>2K, PTZ, seguimiento automático</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://www.securitydoctorscr.com/cdn/shop/files/85_dbbaaf9d-3fe6-4efa-9a10-d507ac23408d_grande.png?v=1766073330" alt="Cámara Imou">
-                            <div class="camera-info">
-                                <h4>Imou Cruiser</h4>
-                                <p>4MP, PTZ, visión nocturna color</p>
-                            </div>
-                        </div>
-                        <div class="camera-item">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQywcNrRdyrsPSw5g5GyVUDqMWik2caKQa1_YTdoT0IoQ&s" alt="Cámara Imou">
-                            <div class="camera-info">
-                                <h4>Imou Bullet</h4>
-                                <p>5MP, IP67, audio bidireccional</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+          </article>
+          <article class="tech-card featured reveal">
+            <img
+              src="assets/dahua-dual.webp"
+              alt="Cámara Dahua de doble lente"
+            />
+            <div>
+              <span class="tech-no">02</span>
+              <h3>Dahua</h3>
+              <p>
+                Opciones versátiles para hogar, comercio y hotelería: WizSense,
+                cámaras activas y equipos de doble lente con seguimiento y
+                disuasión.
+              </p>
+              <div class="tags">
+                <span>WizSense</span><span>Audio</span><span>Doble lente</span>
+              </div>
             </div>
+          </article>
+          <article class="tech-card reveal">
+            <span class="tech-no">03</span>
+            <h3>MikroTik</h3>
+            <p>
+              Administra enlaces de Internet, VPN, ancho de banda y failover.
+              Puede trabajar junto a switches y puntos de acceso Ruijie/Reyee
+              para mantener una red estable, segmentada y administrable.
+            </p>
+            <div class="tags">
+              <span>Failover</span><span>VPN</span><span>VLAN</span>
+            </div>
+          </article>
+          <article class="tech-card reveal">
+            <span class="tech-no">04</span>
+            <h3>Ruijie / Reyee</h3>
+            <p>
+              Wi-Fi administrado, switches PoE y cobertura de alta densidad para
+              hoteles, colegios, oficinas y propiedades de gran extensión.
+            </p>
+            <div class="tags">
+              <span>Wi-Fi 6</span><span>PoE</span><span>Gestión en nube</span>
+            </div>
+          </article>
+          <article class="tech-card unifi-card reveal">
+            <span class="tech-no">05</span>
+            <h3>UniFi</h3>
+            <p>
+              Una plataforma integrada de Ubiquiti para gateways, switching,
+              Wi-Fi y administración centralizada. Permite visualizar toda la
+              red desde una sola interfaz y configurar respaldo de Internet
+              según el gateway utilizado.
+            </p>
+            <div class="tags">
+              <span>Gateway</span><span>Wi-Fi</span
+              ><span>Gestión unificada</span>
+            </div>
+          </article>
         </div>
-    </section>
+      </section>
 
-    <!-- QUOTE SECTION - CORREGIDA -->
-    <section class="section quote-section" id="quote">
-        <div class="container">
-            <div class="quote-container">
-                <div class="section-title">
-                    <h2>Solicita tu Cotización</h2>
-                    <p>Selecciona los productos que te interesan y recibe una cotización personalizada</p>
-                </div>
-                
-                <div class="quote-form" id="quoteForm">
-                    <div class="quote-products">
-                        <h3>Productos de Interés</h3>
-                        <div class="quote-products-grid" id="quoteProductsList"></div>
-                    </div>
-                    
-                    <form id="contactForm">
-                        <div class="form-grid">
-                            <div class="form-group">
-                                <label for="name">Nombre Completo *</label>
-                                <input type="text" id="name" placeholder="Ingresa tu nombre" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Correo Electrónico *</label>
-                                <input type="email" id="email" placeholder="correo@ejemplo.com" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="phone">Teléfono *</label>
-                                <input type="tel" id="phone" placeholder="Ej: 8333-5665" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="company">Empresa (opcional)</label>
-                                <input type="text" id="company" placeholder="Nombre de tu empresa">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensaje o Requerimientos Adicionales</label>
-                            <textarea id="message" rows="4" placeholder="Cuéntanos más sobre tu proyecto..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-secondary btn-lg" style="width: 100%;">
-                            <i class="fab fa-whatsapp"></i> Enviar Cotización por WhatsApp
-                        </button>
-                    </form>
-                </div>
-            </div>
+      <section class="failover section" id="failover">
+        <div class="failover-copy reveal">
+          <p class="eyebrow dark">Internet que no se detiene</p>
+          <h2>Failover con MikroTik, Ruijie y UniFi.</h2>
+          <p>
+            Un gateway compatible de MikroTik, Ruijie/Reyee o UniFi supervisa
+            dos conexiones, por ejemplo fibra y Starlink. Si la principal deja
+            de responder, activa automáticamente el enlace de respaldo. La red
+            mantiene conectados el Wi-Fi, las cámaras y la operación sin que el
+            usuario tenga que cambiar nada.
+          </p>
+          <a
+            class="text-link dark-link"
+            href="https://wa.me/50683335665?text=Hola%2C%20me%20interesa%20una%20soluci%C3%B3n%20de%20Internet%20con%20failover"
+            >Consultar una solución <span>↗</span></a
+          >
         </div>
-    </section>
+        <div
+          class="network-diagram reveal"
+          aria-label="Diagrama de failover con gateway MikroTik, Ruijie/Reyee o UniFi entre fibra, Starlink y la red local"
+        >
+          <div class="source">Fibra <small>Enlace principal</small></div>
+          <div class="source">Starlink <small>Enlace de respaldo</small></div>
+          <div class="router">
+            <span>MikroTik · Ruijie/Reyee · UniFi</span
+            ><small>Supervisa · detecta · cambia automáticamente</small>
+          </div>
+          <div class="destinations">
+            <span>Cámaras</span><span>Wi-Fi</span><span>Operación</span>
+          </div>
+        </div>
+      </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="section" id="about">
-        <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Sobre Inter-Tech Costa Rica</h2>
-                    <p>Con más de 7 años de experiencia en el mercado tecnológico costarricense, nos especializamos en brindar soluciones integrales de seguridad electrónica, redes de datos y equipos de cómputo para hogares y empresas.</p>
-                    <p>Nuestro compromiso es ofrecer productos de la más alta calidad, respaldados por soporte técnico especializado y precios competitivos que se adapten a las necesidades reales de cada cliente.</p>
-                    
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shield-alt"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Productos Certificados</h4>
-                                <p>Garantía oficial y soporte de fábrica</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Soporte Técnico</h4>
-                                <p>Asesoría especializada sin costo</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-shipping-fast"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Envíos a todo CR</h4>
-                                <p>Entregas rápidas y seguras</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-tools"></i>
-                            </div>
-                            <div class="feature-text">
-                                <h4>Instalación Profesional</h4>
-                                <p>Técnicos certificados en campo</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="about-image">
-                    <img src="https://facilityvenezuela.com/wp-content/uploads/elementor/thumbs/Instalacion-de-Camaras-de-Seguridad-%E2%80%93-Facility-Venezuela-4-qnos3xrz729n1ey1w67h46jffgsvlo4d6fjeaqqy8e.webp" alt="Instalación profesional">
-                </div>
-            </div>
+      <section class="service-area section" id="servicios-costa-rica">
+        <div class="section-index">05</div>
+        <header class="service-area-heading reveal">
+          <div>
+            <p class="eyebrow dark">Servicios en Costa Rica</p>
+            <h2>Instalación, monitoreo y mantenimiento.</h2>
+          </div>
+          <p>
+            Atención profesional para propietarios nacionales y extranjeros, en
+            español e inglés, desde el Pacífico Central hacia el Pacífico Sur y
+            zonas del Pacífico Norte.
+          </p>
+        </header>
+        <div class="seo-service-grid">
+          <article class="seo-service reveal">
+            <span>01</span>
+            <h3>Cámaras de seguridad</h3>
+            <p>
+              Venta e instalación de cámaras CCTV e IP para viviendas, villas,
+              condominios, hoteles, restaurantes, comercios y centros
+              educativos.
+            </p>
+            <ul>
+              <li>Hikvision y Dahua</li>
+              <li>Grabación y acceso remoto</li>
+              <li>Alertas inteligentes</li>
+            </ul>
+          </article>
+          <article class="seo-service reveal">
+            <span>02</span>
+            <h3>Internet y redes Wi-Fi</h3>
+            <p>
+              Instalación de Internet, cableado, redes profesionales, puntos de
+              acceso y respaldo automático para mantener cámaras y operaciones
+              conectadas.
+            </p>
+            <ul>
+              <li>MikroTik, Ruijie y UniFi</li>
+              <li>Wi-Fi profesional</li>
+              <li>Failover de Internet</li>
+            </ul>
+          </article>
+          <article class="seo-service reveal">
+            <span>03</span>
+            <h3>Monitoreo y soporte</h3>
+            <p>
+              Configuración de monitoreo remoto, revisión de instalaciones,
+              diagnóstico de fallas y soporte técnico para sistemas de seguridad
+              y conectividad.
+            </p>
+            <ul>
+              <li>Revisión técnica</li>
+              <li>Soporte remoto</li>
+              <li>Optimización del sistema</li>
+            </ul>
+          </article>
+          <article class="seo-service reveal">
+            <span>04</span>
+            <h3>Mantenimiento preventivo</h3>
+            <p>
+              Limpieza, ajuste, pruebas y mantenimiento preventivo de cámaras,
+              grabadores, redes y equipos para conservar imagen estable y
+              evidencia útil.
+            </p>
+            <ul>
+              <li>Pruebas de grabación</li>
+              <li>Estado de conexiones</li>
+              <li>Informe de recomendaciones</li>
+            </ul>
+          </article>
         </div>
-    </section>
+        <div class="coverage-strip reveal">
+          <b>Cobertura principal</b><span>Quepos</span
+          ><span>Manuel Antonio</span><span>Jacó</span><span>Dominical</span
+          ><span>Uvita</span><span>Pacífico Sur</span
+          ><span>Proyectos en Costa Rica</span>
+        </div>
+      </section>
 
-    <!-- FOOTER -->
-    <footer class="footer" id="contact">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>Inter-Tech Costa Rica</h3>
-                    <p>Soluciones tecnológicas profesionales con más de 7 años de experiencia en el mercado costarricense.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/intertechcostarica" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://wa.me/50683335665" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://inter-techcostarica.taplink.bio" target="_blank"><i class="fas fa-link"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Productos</h3>
-                    <ul>
-                        <li><a href="#products">Catálogo completo</a></li>
-                        <li><a href="https://tectelcr.com/product-category/cctv/camaras/ip/" target="_blank" rel="noopener">Productos Tectel</a></li>
-                        <li><a href="https://www.sekunet.com/shop/category/videovigilancia-8" target="_blank" rel="noopener">Productos Sekunet</a></li>
-                        <li><a href="#quote">Solicitar cotización</a></li>
-                        <li><a href="#ruijie">Soluciones Ruijie</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Enlaces Rápidos</h3>
-                    <ul>
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#products">Productos</a></li>
-                        <li><a href="#ruijie">Ruijie</a></li>
-                        <li><a href="#cameras">Cámaras</a></li>
-                        <li><a href="#quote">Cotizaciones</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Contacto Rápido</h3>
-                    <ul class="footer-contact">
-                        <li><i class="fas fa-phone"></i> (506) 8333-5665</li>
-                        <li><i class="fas fa-envelope"></i> intertechpacifico@gmail.com</li>
-                        <li><i class="fas fa-map-marker-alt"></i> San José, Costa Rica</li>
-                    </ul>
-                    
-                    <form class="footer-form" id="footerContactForm">
-                        <input type="text" placeholder="Tu nombre" id="footerName" required>
-                        <input type="tel" placeholder="Teléfono" id="footerPhone" required>
-                        <textarea rows="2" placeholder="Mensaje..." id="footerMessage" required></textarea>
-                        <button type="submit" class="btn btn-sm"><i class="fab fa-whatsapp"></i> Enviar</button>
-                    </form>
-                </div>
-            </div>
-            
-            <div class="copyright">
-                <p>&copy; 2026 Inter-Tech Costa Rica. Todos los derechos reservados. Diseñado para ofrecer soluciones tecnológicas profesionales.</p>
-            </div>
+      <section class="cta">
+        <div class="reveal">
+          <p class="eyebrow">Quepos · Pacífico Central · Todo Costa Rica</p>
+          <h2>Cuéntenos qué necesita proteger o conectar.</h2>
+          <p>
+            Una conversación breve es suficiente para comenzar a darle forma al
+            proyecto.
+          </p>
+          <a
+            class="button light-button"
+            href="https://wa.me/50683335665?text=Hola%2C%20quisiera%20una%20asesor%C3%ADa%20para%20mi%20proyecto"
+            >Escribir al 8333-5665</a
+          >
         </div>
+      </section>
+
+      <section class="founder-footer" id="trayectoria-profesional">
+        <article class="profile-card reveal">
+          <img
+            src="assets/roy-azofeifa-v4.png?v=4"
+            alt="Ing. Roy Azofeifa, director técnico de Inter-Tech Costa Rica"
+          />
+          <div>
+            <p class="eyebrow dark">Dirección técnica</p>
+            <h3>Ing. Roy Azofeifa</h3>
+            <p>
+              Ingeniero de Sistemas, docente de Robótica e Informática y
+              especialista en infraestructura y soporte TI.
+            </p>
+            <div class="credentials">
+              <span><b>7+</b> años en tecnología</span
+              ><span><b>CCNA</b> Redes Cisco</span
+              ><span><b>C1</b> Inglés avanzado</span>
+            </div>
+          </div>
+        </article>
+        <div class="credential-strip reveal">
+          <span>Ingeniería de Sistemas</span><i></i><span>Redes LAN / WAN</span
+          ><i></i><span>Ciberseguridad</span><i></i
+          ><span>Control de calidad</span><i></i
+          ><span>Docencia tecnológica</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand" href="#inicio"
+        ><span class="brand-mark">IT</span
+        ><span>Inter-Tech <em>Costa Rica</em></span></a
+      >
+      <div class="footer-links">
+        <a
+          href="https://intertechcr.github.io/page/"
+          target="_blank"
+          rel="noopener"
+          >Ver tienda ↗</a
+        ><a
+          href="https://wa.me/50683335665?text=Hola%2C%20quisiera%20informaci%C3%B3n"
+          target="_blank"
+          rel="noopener"
+          >WhatsApp directo · +506 8333-5665 ↗</a
+        ><a
+          href="https://www.facebook.com/intertechcostarica"
+          target="_blank"
+          rel="me noopener"
+          >Facebook oficial ↗</a
+        ><a
+          href="https://www.instagram.com/inter_techcostarica/"
+          target="_blank"
+          rel="me noopener"
+          >Instagram oficial ↗</a
+        ><a href="mailto:intertechpacifico@gmail.com"
+          >intertechpacifico@gmail.com</a
+        >
+      </div>
+      <p>© <span id="year"></span> Inter-Tech Costa Rica</p>
     </footer>
-
-    <!-- CART MODAL -->
-    <div class="cart-modal" id="cartModal">
-        <div class="cart-header">
-            <h3>Carrito de Compras</h3>
-            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="cart-items" id="cartItems"></div>
-        <div class="cart-footer" id="cartFooter"></div>
-    </div>
-    
-    <!-- OVERLAY -->
-    <div class="overlay" id="overlay"></div>
-
-    <!-- WHATSAPP FLOATING BUTTON -->
-    <a href="https://wa.me/50683335665?text=Hola,%20me%20interesan%20sus%20productos%20de%20Inter-Tech%20Costa%20Rica" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- SCRIPT -->
-    <script>
-        // ========== PRODUCTOS ==========
-        const products = [
-            {
-                id: 1,
-                name: "Starlink Mini Internet Satelital",
-                category: "networking",
-                price: "₡116,600 + IVA",
-                priceNumber: 116600,
-                image: "https://starlink.com/public-files/starlink_mini_hero_1100x620.jpg",
-                description: "Kit compacto con router WiFi integrado, velocidades +100 Mbps. Instalación profesional disponible."
-            },
-            {
-                id: 2,
-                name: "Router WiFi AC1300 Rompe Muros",
-                category: "networking",
-                price: "₡38,000 + IVA",
-                priceNumber: 38000,
-                image: "https://rootitsupport.com/userfiles/RG-EW1300G-2.png",
-                description: "Router doble banda AC1300, ideal para hogar u oficina con múltiples dispositivos."
-            },
-            {
-                id: 3,
-                name: "Laptop HP EliteBook i5 G8",
-                category: "computing",
-                price: "₡400,000 + IVA",
-                priceNumber: 400000,
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5cU094XjWTGyCthY1nfq0pTMQM-2kvdwbqan4wyxG4Q&s=10",
-                description: "HP EliteBook 840 G8, Intel Core i5, 32GB RAM, 1TB SSD, pantalla 14″ Full HD."
-            },
-            {
-                id: 4,
-                name: "XVR Dahua WizSense 8 Canales",
-                category: "security",
-                price: "₡70,000 + IVA",
-                priceNumber: 70000,
-                image: "https://cdn.tvc.mx/media/237915/Grabador-de-Seguridad-XVR5108HS-4KL.png",
-                description: "Grabador 8 canales Penta-brid, compatible con HDCVI/AHD/TVI/CVBS/IP, H.265+."
-            },
-            {
-                id: 5,
-                name: "Kit Enlace P2P 500m Ruijie",
-                category: "networking",
-                price: "₡80,000 + IVA",
-                priceNumber: 80000,
-                image: "https://teknnos.com.co/wp-content/uploads/2025/04/RGEST100E-p.png",
-                description: "Kit de antenas punto a punto, incluye 2 unidades con inyectores PoE, protección IP55."
-            },
-            {
-                id: 6,
-                name: "Cámara Bullet Dahua D1",
-                category: "security",
-                price: "₡41,000 + IVA",
-                priceNumber: 41000,
-                image: "https://static01.galaxus.com/productimages/7/1/0/3/6/0/1/4/7/4/1/8/9/1/0/4/3/6/3/0198b113-1c6a-7c20-8f1a-883b663d0e2e_720.jpeg",
-                description: "Cámara WiFi 2K (3MP), WiFi 6, IP67, ideal interior/exterior."
-            },
-            {
-                id: 7,
-                name: "Cámara Domo Dahua IP",
-                category: "security",
-                price: "₡32,000 + IVA",
-                priceNumber: 32000,
-                image: "https://www.securitydoctorscr.com/cdn/shop/products/36_7eafe313-4ffd-4e73-893f-8943b82aa008_1024x1024.png?v=1675438210",
-                description: "Cámara IP Domo 4MP con parlante, IP67, visión nocturna."
-            },
-            {
-                id: 8,
-                name: "Cámara Dahua HERO PT",
-                category: "security",
-                price: "₡29,000 + IVA",
-                priceNumber: 29000,
-                image: "https://tectelcr.com/wp-content/uploads/2024/06/DH-H4A.jpg",
-                description: "Cámara PTZ WiFi 4MP, giro/inclinación, visión nocturna, audio bidireccional."
-            },
-            {
-                id: 9,
-                name: "Cámara Dahua Picoo Mini PT",
-                category: "security",
-                price: "₡60,000 + IVA",
-                priceNumber: 60000,
-                image: "https://imagedelivery.net/wExMwKP1304LY2ReXCyTPg/d7a0bb66-a1ef-4285-414a-e63aa7916e00/w=400,h=400,fit=crop",
-                description: "Cámara WiFi Mini PT dual 5MP + 5MP, detección inteligente."
-            },
-            {
-                id: 10,
-                name: "Switch PoE Ruijie 8 Puertos",
-                category: "networking",
-                price: "₡45,000 + IVA",
-                priceNumber: 45000,
-                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiJD7dGi_vkrRDLHW1B4YSoZK-hwh_GEdBCA&s",
-                description: "Switch gestionable PoE+, 8 puertos Gigabit, VLAN, QoS."
-            },
-            {
-                id: 11,
-                name: "Access Point Ruijie WiFi 6",
-                category: "networking",
-                price: "₡55,000 + IVA",
-                priceNumber: 55000,
-                image: "https://tectelcr.com/wp-content/uploads/2024/04/RG-EST100-E.jpg",
-                description: "AP interior WiFi 6, doble banda, hasta 256 usuarios."
-            },
-             {
-                id: 12,
-                name: "UPS CDP 500VA/250W Litio",
-                category: "networking",
-                price: "₡45,000 + IVA",
-                priceNumber: 45000,
-                image: "data:image/jpeg;base64,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",
-                description: "UPS compacto y eficiente, ideal para proteger equipos electrónicos contra apagones y variaciones de voltaje."
-            },
-          
-        ];
-
-        // Catálogo autorizado de proveedores. Sin precios: venta mediante cotización personalizada.
-        const catalogProducts = [
-          {id:101,supplier:"Tectel",category:"tectel",name:"Batería recargable IMOU FRB20 para Cell 2",image:"https://tectelcr.com/wp-content/uploads/2023/08/FRB20-300x300.jpg",source:"https://tectelcr.com/producto/bateria-de-litio-recargable-imou-by-dahua-para-cell-2-frb20/",description:"Batería de litio recargable para cámara IMOU Cell 2.",price:"Precio por cotización",priceNumber:0},
-          {id:102,supplier:"Tectel",category:"tectel",name:"Bodycam Dahua 1080p 4G Wi-Fi GPS",image:"https://tectelcr.com/wp-content/uploads/2024/05/MPT221-300x300.jpg",source:"https://tectelcr.com/producto/camara-bodycam-1080p-ip68-16gb-4g-wifi-gps-ir-touch-dh-mpt221/",description:"Cámara corporal IP68 con memoria, conectividad 4G, Wi-Fi, GPS e infrarrojo.",price:"Precio por cotización",priceNumber:0},
-          {id:103,supplier:"Tectel",category:"tectel",name:"Bodycam Dahua MPT220 4G Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2023/06/MPT220-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-cuerpo-ip68-body-cam-2g-3g-4g-wifi-bluetooh-16g-interno-amp-mpt220/",description:"Cámara corporal IP68 con 4G, Wi-Fi, Bluetooth y almacenamiento interno.",price:"Precio por cotización",priceNumber:0},
-          {id:104,supplier:"Tectel",category:"tectel",name:"Dahua Hero H4C PT 4MP Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2024/08/DH-H4C-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-hero-pt-4mp-wifi-smart-ir-15m-audio-doble-via-dh-h4c/",description:"Cámara PT inteligente de 4MP con infrarrojo y audio de doble vía.",price:"Precio por cotización",priceNumber:0},
-          {id:105,supplier:"Tectel",category:"tectel",name:"Dahua Hero H4A PT 4MP Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2024/06/DH-H4A-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-pt-4mp-3-6mm-wifi-smart-ir-10m-mic-dh-h4a/",description:"Cámara PT Wi-Fi de 4MP con visión nocturna y micrófono integrado.",price:"Precio por cotización",priceNumber:0},
-          {id:106,supplier:"Tectel",category:"tectel",name:"Dahua domo doble lente WizMind 4MP",image:"https://tectelcr.com/wp-content/uploads/2025/01/IPC-HDBW5441F-AS-E2-300x300.jpg",source:"https://tectelcr.com/producto/camara-doble-lente-ip-dahua-domo-4mp-2-8mm-ir30m-mic-ip67-ik10-wizmind-ipc-hdbw5441f-as-e2/",description:"Domo IP de doble lente, micrófono, IR 30m, IP67 e IK10.",price:"Precio por cotización",priceNumber:0},
-          {id:107,supplier:"Tectel",category:"tectel",name:"Dahua bullet HDCVI 2MP iluminación dual",image:"https://tectelcr.com/wp-content/uploads/2026/06/HAC-HFW1200RLN-IL-T-300x300.png",source:"https://tectelcr.com/producto/camara-hdcvi-dahua-bullet-2mp-1080p-2-8mm-ilum-dual-30m-audio-doble-via-ip67-hac-hfw1200rln-il-t/",description:"Bullet 1080p con iluminación dual, audio bidireccional e IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:108,supplier:"Tectel",category:"tectel",name:"Dahua eyeball HDCVI 2MP con micrófono",image:"https://tectelcr.com/wp-content/uploads/2025/02/HAC-HDW1200CLQN-IL-A-300x300.jpg",source:"https://tectelcr.com/producto/camara-hdcvi-dahua-eyeball-1080p-2mp-2-8mm-ilum-dual-20m-mic-plastica-hac-hdw1200clqn-il-a/",description:"Cámara eyeball 1080p con iluminación dual de 20m y micrófono.",price:"Precio por cotización",priceNumber:0},
-          {id:109,supplier:"Tectel",category:"tectel",name:"IMOU Bulb Cam 5MP 3K",image:"https://tectelcr.com/wp-content/uploads/2024/02/IPC-S6DN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-bulb-cam-5mp-3k-pt-via-e26-e27-con-sirena-audio-doble-via-ipc-s6dn-5m0web/",description:"Cámara tipo bombillo PT con sirena, audio bidireccional y montaje E26/E27.",price:"Precio por cotización",priceNumber:0},
-          {id:110,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser 4MP exterior",image:"https://tectelcr.com/wp-content/uploads/2023/09/IPC-S41FEN-300x300.jpg",source:"https://tectelcr.com/producto/camara-imou-by-dahua-cruiser-4mp-12v-ir30m-ip66-3-6mm-microfono-det-humano-disuacion-ipc-s41fen/",description:"Cámara exterior IP66 con detección humana, audio e IR de 30m.",price:"Precio por cotización",priceNumber:0},
-          {id:111,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser SE 4MP PoE",image:"https://tectelcr.com/wp-content/uploads/2023/08/IPC-S41FAN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-by-dahua-cruiser-se-4mp-poe-ir30m-ip66-3-6mm-det-humano-disuacion-ipc-s41fan-2/",description:"Cámara PoE IP66 con detección humana y visión infrarroja de 30m.",price:"Precio por cotización",priceNumber:0},
-          {id:112,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser Dual 8MP PT",image:"https://tectelcr.com/wp-content/uploads/2024/02/IPC-S7XN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-cruiser-dual-8mp-smart-full-color-doble-lente-ptz-ipc-s7xn-8m0wed/",description:"Cámara PT de doble lente 5MP + 3MP con imagen Full-Color.",price:"Precio por cotización",priceNumber:0},
-          {id:113,supplier:"Tectel",category:"tectel",name:"Dahua ANPR 4MP con radar 180km/h",image:"https://tectelcr.com/wp-content/uploads/woocommerce-placeholder-300x300.png",source:"https://tectelcr.com/producto/camara-ip-anpr-180kmh-con-radar-dahua-4mp-8-32mm-ir30m-ip68-itc431-kw4f/",description:"Cámara especializada para reconocimiento de placas con radar e IP68.",price:"Precio por cotización",priceNumber:0},
-          {id:114,supplier:"Tectel",category:"tectel",name:"Dahua ANPR 4MP 80km/h",image:"https://tectelcr.com/wp-content/uploads/2026/01/ITC413-PW4D-IZ1-300x300.png",source:"https://tectelcr.com/producto/camara-ip-anpr-80kmh-dahua-10-metros-4mp-2-7-12mm-ir30m-ip67-itc413-pw4d-iz1/",description:"Reconocimiento de placas hasta 80km/h, lente motorizado e IR de 30m.",price:"Precio por cotización",priceNumber:0},
-          {id:115,supplier:"Tectel",category:"tectel",name:"Dahua domo dual WizSense 2×4MP",image:"https://tectelcr.com/wp-content/uploads/2025/06/DH-IPC-HDBW2449F-AS-E2-IL.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-2x4mp-domo-lente-2-8mmsmart-dualfixed-focalwizsense-ip67-dh-ipc-hdbw2449f-as-e2-il/",description:"Domo inteligente de doble sensor y lente fija con protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:116,supplier:"Tectel",category:"tectel",name:"Dahua TiOC Duo 180° 8MP",image:"https://tectelcr.com/wp-content/uploads/2025/01/IPCPDW3849A18-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-2x4mp-tioc-duo-180g-8mp-2-8mm-ilum-dual-25m-disuasion-ip67-ipc-pdw3849-a180-as-pv/",description:"Vista panorámica de 180°, iluminación dual y disuasión activa.",price:"Precio por cotización",priceNumber:0},
-          {id:117,supplier:"Tectel",category:"tectel",name:"Dahua TiOC bullet 4MP Pro",image:"https://tectelcr.com/wp-content/uploads/2025/05/IPCHFW3849T1ASPVPRO-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-4mp-tioc-bullet-lente-2-8mmsirenaluz-estrobopoeip67-dh-ipc-hfw3449t1-as-pv-pro/",description:"Bullet PoE con sirena, luz estroboscópica y protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:118,supplier:"Tectel",category:"tectel",name:"Dahua WizColor TiOC domo 4MP",image:"https://tectelcr.com/wp-content/uploads/2025/05/IPC-HDW3849HASPVPRO-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-4mp-tioc-domo-lente-2-8mm-sirena-luz-estrobopoeip67-dh-ipc-hdw3449h-as-pv-pro/",description:"Domo PoE Full-Color con sirena, estrobo y protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:119,supplier:"Tectel",category:"tectel",name:"Dahua bullet panorámica 180° 8MP",image:"https://tectelcr.com/wp-content/uploads/2026/01/IPC-PFW5849-A180-E2-ASTE-300x300.png",source:"https://tectelcr.com/producto/camara-ip-dahua-bullet-180-grados-8mp-fullcolor-40m-mic-ip67-mizmind-pfw5849-a180-ea-aste/",description:"Cámara panorámica Full-Color con micrófono y alcance de 40m.",price:"Precio por cotización",priceNumber:0},
-          {id:120,supplier:"Tectel",category:"tectel",name:"Dahua bullet IP 2MP iluminación dual",image:"https://tectelcr.com/wp-content/uploads/2026/06/IPC-HFW1239TL1-A-IL-300x300.png",source:"https://tectelcr.com/producto/camara-ip-dahua-bullet-2mp-2-8mm-ilum-dual-20m-mic-ip67-ipc-hfw1239tl1-a-il/",description:"Bullet IP67 con iluminación dual de 20m y micrófono integrado.",price:"Precio por cotización",priceNumber:0},
-
-          {id:201,supplier:"Sekunet",category:"sekunet",name:"Adaptador empotrado MegaVideo Flex Arecont",image:"https://www.sekunet.com/web/image/product.product/1871/image_1024/%5BARC-MF-FMA%5D%20Adaptador%20de%20montaje%20empotrado%20para%20c%C3%A1mara%20MegaVideo%20Flex%20Arecont?unique=ee1fab8",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mf-fma-adaptador-de-montaje-empotrado-para-camara-megavideo-flex-arecont-1871",description:"Accesorio de montaje empotrado para instalaciones discretas y profesionales.",price:"Precio por cotización",priceNumber:0},
-          {id:202,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 12mm",image:"https://www.sekunet.com/web/image/product.product/3537/image_1024/%5BARC-MPM12.0A%5D%20Lente%20de%2012mm%2C%20f-1.6%2C%20Iris%20fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm120a-lente-de-12mm-f16-iris-fijo-microdome-arecont-3637",description:"Lente de 12mm f/1.6 con iris fijo para cámaras MicroDome.",price:"Precio por cotización",priceNumber:0},
-          {id:203,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 16mm",image:"https://www.sekunet.com/web/image/product.product/3538/image_1024/%5BARC-MPM16.0%5D%20Lente%20de%2016mm%2C%20f-1.6%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm160-lente-de-16mm-f16-iris-fijo-microdome-arecont-3638",description:"Lente de 16mm f/1.6 para vigilancia focalizada con MicroDome.",price:"Precio por cotización",priceNumber:0},
-          {id:204,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 2.8mm",image:"https://www.sekunet.com/web/image/product.product/3539/image_1024/%5BARC-MPM2.8A%5D%20Lente%20de%202.8mm%2C%20f-1.8%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=55130d3",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm28a-lente-de-28mm-f18-iris-fijo-microdome-arecont-3639",description:"Lente gran angular de 2.8mm f/1.8 para MicroDome.",price:"Precio por cotización",priceNumber:0},
-          {id:205,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 6mm",image:"https://www.sekunet.com/web/image/product.product/3540/image_1024/%5BARC-MPM6.0%5D%20Lente%20de%206mm%2C%20f-1.6%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm60-lente-de-6mm-f16-iris-fijo-microdome-arecont-3640",description:"Lente de 6mm f/1.6 con iris fijo para MicroDome.",price:"Precio por cotización",priceNumber:0},
-          {id:206,supplier:"Sekunet",category:"sekunet",name:"Tapa de montaje SurroundVideo Omni",image:"https://www.sekunet.com/web/image/product.product/4563/image_1024/%5BARC-SO-CAP%5D%20Tapa%20redonda%20de%20montaje%201.5%22%20NPT%20para%20c%C3%A1mara%20SurroundVideo%20Omni?unique=6bc156f",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-so-cap-tapa-redonda-de-montaje-15-npt-para-camara-surroundvideo-omni-4763",description:"Tapa redonda NPT de montaje para cámaras multisensor Omni.",price:"Precio por cotización",priceNumber:0},
-          {id:207,supplier:"Sekunet",category:"sekunet",name:"Actualización VideoXpert Professional 1 canal",image:"https://www.sekunet.com/web/image/product.template/5173/image_1024/%5BAVG-VXP-SUP-1Y%5D%20VideoXpert%20Professional%2C%20one%20%281%29%20year%20software%20upgrade%20for%20one%20%281%29%20channel.?unique=4060d3a",source:"https://www.sekunet.com/shop/videovigilancia-8/avg-vxp-sup-1y-videoxpert-professional-one-1-year-software-upgrade-for-one-1-channel-5173",description:"Cobertura anual de actualización de software para un canal VideoXpert.",price:"Precio por cotización",priceNumber:0},
-          {id:208,supplier:"Sekunet",category:"sekunet",name:"EZVIZ C6N PT 1080p interior",image:"https://www.sekunet.com/web/image/product.product/2732/image_1024/%5BEVI-CS-C6N-R101-1G2WF%5D%20C%C3%A1mara%20PT%201080p%20para%20interior%20con%20giro%20340%C2%B0%20y%20visi%C3%B3n%20nocturna%20inteligente?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-c6n-r101-1g2wf-camara-pt-1080p-para-interior-con-giro-340-y-vision-nocturna-inteligente-2732",description:"Cámara PT interior con giro de 340° y visión nocturna inteligente.",price:"Precio por cotización",priceNumber:0},
-          {id:209,supplier:"Sekunet",category:"sekunet",name:"Soporte de pared EZVIZ para cámaras PT",image:"https://www.sekunet.com/web/image/product.product/5472/image_1024/%5BEVI-CS-CMT-R100-Bracket%5D%20Soporte%20montaje%20de%20pared%2C%20Compatible:%20H6c%2C%20H6%2C%20C6N%2C%20C6c%2C%20C6%2C%20C60p%2C%20H7c%2C%20TY7%2C%20C7?unique=bc2cbdf",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-cmt-r100-bracket-soporte-montaje-de-pared-compatible-h6c-h6-c6n-c6c-c6-c60p-h7c-ty7-c7-5736",description:"Soporte compatible con las principales cámaras PT interiores EZVIZ.",price:"Precio por cotización",priceNumber:0},
-          {id:210,supplier:"Sekunet",category:"sekunet",name:"Panel solar EZVIZ",image:"https://www.sekunet.com/web/image/product.product/3912/image_1024/%5BEVI-CS-CMT-SOLAR%20PANEL-C%5D%20Panel%20Solar.%20Marca%20EZVIZ?unique=84a4fac",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-cmt-solar-panel-c-panel-solar-marca-ezviz-4012",description:"Alimentación solar para soluciones de videovigilancia EZVIZ compatibles.",price:"Precio por cotización",priceNumber:0},
-          {id:211,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H1C mini cámara 1080p",image:"https://www.sekunet.com/web/image/product.product/3321/image_1024/%5BEVI-CS-H1C-R101-1G2WR%5D%20H1C%20mini%20c%C3%A1mara%201920%20X%201080p%20c%C3%A1mara%2C%20IP%2C%202.4mm%2C%20microSD%20hasta%20512gb?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h1c-r101-1g2wr-h1c-mini-camara-1920-x-1080p-camara-ip-24mm-microsd-hasta-512gb-3421",description:"Mini cámara IP 1080p con soporte microSD de hasta 512GB.",price:"Precio por cotización",priceNumber:0},
-          {id:212,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C mini bullet Wi-Fi 1080p",image:"https://www.sekunet.com/web/image/product.product/2848/image_1024/%5BEVI-CS-H3c-R100-1K2WFL%5D%20C%C3%A1mara%20Wi-Fi%20mini%20bullet%20EZVIZ%20H3C%201080p%20IP67%20con%20detecci%C3%B3n?unique=cd832d5",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k2wfl-camara-wi-fi-mini-bullet-ezviz-h3c-1080p-ip67-con-deteccion-2848",description:"Mini bullet Wi-Fi con detección inteligente y protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:213,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C Color Night 1080p",image:"https://www.sekunet.com/web/image/product.product/5343/image_1024/%5BEVI-CS-H3C-R100-1K2WFL%5D%20C%C3%A1mara%20Wifi%20para%20exteriores%20H3c%20Color%20Night%20FHD%201080p?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k2wfl-camara-wifi-para-exteriores-h3c-color-night-fhd-1080p-5607",description:"Cámara Wi-Fi exterior Full HD con visión nocturna a color.",price:"Precio por cotización",priceNumber:0},
-          {id:214,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C mini bullet Wi-Fi 2K",image:"https://www.sekunet.com/web/image/product.product/2828/image_1024/%5BEVI-CS-H3C-R100-1K3WKFL%5D%20C%C3%A1mara%20Wi-Fi%202K%20Mini%20Bullet%20con%20detecci%C3%B3n%20de%20personas%20e%20IP67?unique=cd832d5",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k3wkfl-camara-wi-fi-2k-mini-bullet-con-deteccion-de-personas-e-ip67-2828",description:"Mini bullet 2K con detección de personas y protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:215,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H4 domo 2K con IA",image:"https://www.sekunet.com/web/image/product.product/5039/image_1024/%5BEVI-CS-H4-R201-1H3EKFL%282.8mm%29%5D%20C%C3%A1mara%20Domo%202K%20con%20Detecci%C3%B3n%20de%20Personas%20y%20Veh%C3%ADculos%20por%20IA%2C%20Visi%C3%B3n%20Nocturna%20a%20Color%2C%20Sirena%20y%20Luz%20Estrobosc%C3%B3pica?unique=14da134",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h4-r201-1h3ekfl28mm-camara-domo-2k-con-deteccion-de-personas-y-vehiculos-por-ia-vision-nocturna-a-color-sirena-y-luz-estroboscopica-5303",description:"Detección por IA, visión nocturna a color, sirena y luz estroboscópica.",price:"Precio por cotización",priceNumber:0},
-          {id:216,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H5 cámara IP 2K PoE",image:"https://www.sekunet.com/web/image/product.product/2695/image_1024/%5BEVI-CS-H5-R201-1H3EKFL%5D%20C%C3%A1mara%20IP%202K%20PoE%20de%20exterior%20con%20IA%2C%20sirena%2C%20estrobo%20e%20IP67?unique=f2419db",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h5-r201-1h3ekfl-camara-ip-2k-poe-de-exterior-con-ia-sirena-estrobo-e-ip67-2695",description:"Cámara exterior PoE con IA, sirena, estrobo y protección IP67.",price:"Precio por cotización",priceNumber:0},
-          {id:217,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H6C PT Wi-Fi 3K",image:"https://www.sekunet.com/web/image/product.product/2838/image_1024/%5BEVI-CS-H6C-R105-1J5WF%5D%20C%C3%A1mara%20Wi-Fi%203K%20panor%C3%A1mica%20340%C2%B0%20con%20autotracking%20y%20audio%20bidireccional?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h6c-r105-1j5wf-camara-wi-fi-3k-panoramica-340-con-autotracking-y-audio-bidireccional-2838",description:"Cámara panorámica 340° con seguimiento automático y audio bidireccional.",price:"Precio por cotización",priceNumber:0},
-          {id:218,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H6C PT Wi-Fi 2K",image:"https://www.sekunet.com/web/image/product.product/2834/image_1024/%5BEVI-CS-H6C-R105-1L3WF%5D%20C%C3%A1mara%20Wi-Fi%202K%20panor%C3%A1mica%20340%C2%B0%20con%20autotracking%20y%20audio%20bidireccional?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h6c-r105-1l3wf-camara-wi-fi-2k-panoramica-340-con-autotracking-y-audio-bidireccional-2834",description:"Cámara PT 2K de 340° con autotracking y comunicación de doble vía.",price:"Precio por cotización",priceNumber:0},
-          {id:219,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H8C 3MP PoE exterior",image:"https://www.sekunet.com/web/image/product.product/2649/image_1024/%5BEVI-CS-H8C-R200-1K3EKFL4MM%5D%20C%C3%A1mara%20Ezviz%20H8C%203MP%20POE%20CS-H8c-R200-1K3EKFL%284mm%29?unique=f2419db",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h8c-r200-1k3ekfl4mm-camara-ezviz-h8c-3mp-poe-cs-h8c-r200-1k3ekfl4mm-2649",description:"Cámara PT exterior de 3MP con alimentación PoE.",price:"Precio por cotización",priceNumber:0},
-          {id:220,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H8C SE exterior rotativa 2K",image:"https://www.sekunet.com/web/image/product.product/3099/image_1024/%5BEVI-CS-H8C-R200-1K3WKFL4MM%5D%20EZVIZ%20H8c%20SE%20C%C3%A1mara%20de%20Seguridad%20Exterior%20Rotativa%202K%20WiFi%20Blanca?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h8c-r200-1k3wkfl4mm-ezviz-h8c-se-camara-de-seguridad-exterior-rotativa-2k-wifi-blanca-3199",description:"Cámara rotativa exterior 2K con conectividad Wi-Fi.",price:"Precio por cotización",priceNumber:0}
-        ];
-
-        // ========== CARRITO ==========
-        class ShoppingCart {
-            constructor() {
-                this.cart = JSON.parse(localStorage.getItem('intertechQuoteCartV2')) || [];
-                this.cartCount = document.getElementById('cartCount');
-                this.cartModal = document.getElementById('cartModal');
-                this.cartItems = document.getElementById('cartItems');
-                this.cartFooter = document.getElementById('cartFooter');
-                this.overlay = document.getElementById('overlay');
-                this.init();
-            }
-            
-            init() {
-                document.getElementById('cartIcon').addEventListener('click', () => this.open());
-                document.getElementById('closeCart').addEventListener('click', () => this.close());
-                this.overlay.addEventListener('click', () => this.close());
-                this.updateCount();
-            }
-            
-            updateCount() {
-                const total = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-                this.cartCount.textContent = total;
-            }
-            
-            add(product) {
-                const existing = this.cart.find(item => item.id === product.id);
-                if (existing) {
-                    existing.quantity++;
-                } else {
-                    this.cart.push({...product, quantity: 1});
-                }
-                this.save();
-                this.updateCount();
-                this.showNotification(`${product.name} agregado al carrito`);
-            }
-            
-            remove(productId) {
-                this.cart = this.cart.filter(item => item.id !== productId);
-                this.save();
-                this.updateCount();
-                this.render();
-                this.showNotification('Producto eliminado');
-            }
-            
-            updateQuantity(productId, newQty) {
-                const item = this.cart.find(item => item.id === productId);
-                if (item) {
-                    if (newQty > 0) {
-                        item.quantity = newQty;
-                    } else {
-                        this.remove(productId);
-                        return;
-                    }
-                    this.save();
-                    this.updateCount();
-                    this.render();
-                }
-            }
-            
-            save() {
-                localStorage.setItem('intertechQuoteCartV2', JSON.stringify(this.cart));
-            }
-            
-            open() {
-                this.cartModal.classList.add('open');
-                this.overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                this.render();
-            }
-            
-            close() {
-                this.cartModal.classList.remove('open');
-                this.overlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-            
-            render() {
-                this.cartItems.innerHTML = '';
-                
-                if (this.cart.length === 0) {
-                    this.cartItems.innerHTML = `
-                        <div class="cart-empty">
-                            <i class="fas fa-shopping-cart"></i>
-                            <h4>Tu carrito está vacío</h4>
-                            <p>Agrega productos desde nuestra tienda</p>
-                        </div>
-                    `;
-                    this.cartFooter.innerHTML = '';
-                    return;
-                }
-                
-                this.cart.forEach(item => {
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = 'cart-item';
-                    itemDiv.innerHTML = `
-                        <img src="${item.image}" class="cart-item-img">
-                        <div class="cart-item-info">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">Cotización personalizada</div>
-                            <div class="cart-item-actions">
-                                <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                                <span class="item-quantity">${item.quantity}</span>
-                                <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
-                                <button class="remove-item" onclick="cart.remove(${item.id})"><i class="fas fa-trash"></i></button>
-                            </div>
-                        </div>
-                    `;
-                    this.cartItems.appendChild(itemDiv);
-                });
-                
-                this.cartFooter.innerHTML = `
-                    <div class="cart-total">
-                        <span>${this.cart.length} producto(s) seleccionado(s)</span>
-                        <span>Sin precios publicados</span>
-                    </div>
-                    <div class="cart-actions">
-                        <button class="btn" onclick="cart.close()">Seguir Comprando</button>
-                        <button class="btn btn-secondary" onclick="checkout()">Contactar al vendedor</button>
-                    </div>
-                `;
-            }
-            
-            showNotification(msg) {
-                const notif = document.createElement('div');
-                notif.style.cssText = `
-                    position: fixed; top: 100px; right: 20px; background: var(--success); 
-                    color: white; padding: 15px 20px; border-radius: 5px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
-                    z-index: 2000; transition: all 0.3s ease; font-weight: 500;
-                `;
-                notif.textContent = msg;
-                document.body.appendChild(notif);
-                setTimeout(() => {
-                    notif.style.opacity = '0';
-                    setTimeout(() => document.body.removeChild(notif), 300);
-                }, 3000);
-            }
-        }
-
-        const cart = new ShoppingCart();
-
-        // ========== CARGAR PRODUCTOS ==========
-        function loadProducts(filter = 'all') {
-            const grid = document.getElementById('productsGrid');
-            grid.innerHTML = '';
-            
-            const filtered = filter === 'all' ? catalogProducts : catalogProducts.filter(p => p.category === filter);
-            
-            filtered.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'product-card';
-                card.innerHTML = `
-                    <span class="supplier-badge ${p.category}">${p.supplier}</span>
-                    <div class="product-img"><img src="${p.image}" alt="${p.name}"></div>
-                    <div class="product-info">
-                        <span class="product-category">${getCategoryName(p.category)}</span>
-                        <h3>${p.name}</h3>
-                        <p class="product-description">${p.description}</p>
-                        <a class="catalog-source" href="${p.source}" target="_blank" rel="noopener">Ver ficha del proveedor <i class="fas fa-arrow-up-right-from-square"></i></a>
-                        <div class="product-actions">
-                            <button class="btn btn-sm" onclick="showDetails(${p.id})">Ver ficha</button>
-                            <button class="btn btn-secondary btn-sm" onclick="addProductToCart(${p.id})">
-                                <i class="fas fa-cart-plus"></i> Agregar
-                            </button>
-                            <button class="btn btn-sm contact-product" onclick="contactProduct(${p.id})"><i class="fab fa-whatsapp"></i> Contactar al vendedor</button>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        function getCategoryName(cat) {
-            const map = { tectel: 'Catálogo Tectel', sekunet: 'Catálogo Sekunet' };
-            return map[cat] || cat;
-        }
-
-        // ========== CARGAR PRODUCTOS PARA COTIZACIÓN ==========
-        function loadQuoteProducts() {
-            const list = document.getElementById('quoteProductsList');
-            list.innerHTML = '';
-            catalogProducts.forEach(p => {
-                const item = document.createElement('div');
-                item.className = 'quote-product-item';
-                item.innerHTML = `
-                    <input type="checkbox" value="${p.id}" id="prod_${p.id}">
-                    <label for="prod_${p.id}">${p.name} · ${p.supplier}</label>
-                `;
-                list.appendChild(item);
-            });
-        }
-
-        // ========== ENVÍO A WHATSAPP ==========
-        function sendToWhatsApp(data) {
-            let message = `*Cotización - Inter-Tech Costa Rica*\n\n`;
-            message += `*Nombre:* ${data.name}\n`;
-            message += `*Teléfono:* ${data.phone}\n`;
-            if (data.email) message += `*Email:* ${data.email}\n`;
-            if (data.company) message += `*Empresa:* ${data.company}\n`;
-            if (data.products && data.products.length) {
-                message += `\n*Productos de interés:*\n`;
-                data.products.forEach(id => {
-                    const prod = catalogProducts.find(p => p.id == id);
-                    if (prod) message += `• ${prod.name} · ${prod.supplier}\n`;
-                });
-            }
-            if (data.message) message += `\n*Mensaje:* ${data.message}\n`;
-            
-            const url = `https://wa.me/50683335665?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        // ========== LIMPIAR FORMULARIO ==========
-        function resetQuoteForm() {
-            // Limpiar todos los campos de texto
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('phone').value = '';
-            document.getElementById('company').value = '';
-            document.getElementById('message').value = '';
-            
-            // Desmarcar todos los checkboxes
-            document.querySelectorAll('#quoteProductsList input[type="checkbox"]').forEach(cb => {
-                cb.checked = false;
-            });
-            
-            // Remover la clase 'selected' de todos los items
-            document.querySelectorAll('.quote-product-item').forEach(item => {
-                item.classList.remove('selected');
-            });
-        }
-
-        // ========== EVENTOS ==========
-        document.addEventListener('DOMContentLoaded', () => {
-            loadProducts();
-            loadQuoteProducts();
-            
-            // Filtros
-            document.querySelectorAll('.filter-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    loadProducts(this.dataset.filter);
-                });
-            });
-            
-            // Menú móvil
-            document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-                document.getElementById('navMenu').classList.toggle('active');
-                this.innerHTML = this.innerHTML.includes('bars') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-            });
-            
-            // Cerrar menú al hacer click
-            document.querySelectorAll('.nav-list a').forEach(link => {
-                link.addEventListener('click', () => {
-                    document.getElementById('navMenu').classList.remove('active');
-                    document.getElementById('mobileMenuBtn').innerHTML = '<i class="fas fa-bars"></i>';
-                });
-            });
-            
-            // Formulario de cotización - AHORA CON RESET
-            document.getElementById('contactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const selected = [];
-                document.querySelectorAll('#quoteProductsList input:checked').forEach(cb => {
-                    selected.push(parseInt(cb.value));
-                });
-                
-                if (selected.length === 0) {
-                    alert('Por favor selecciona al menos un producto');
-                    return;
-                }
-                
-                // Enviar a WhatsApp
-                sendToWhatsApp({
-                    name: document.getElementById('name').value,
-                    email: document.getElementById('email').value,
-                    phone: document.getElementById('phone').value,
-                    company: document.getElementById('company').value,
-                    message: document.getElementById('message').value,
-                    products: selected
-                });
-                
-                // LIMPIAR EL FORMULARIO después de enviar
-                resetQuoteForm();
-                
-                // Mostrar mensaje de confirmación
-                alert('¡Cotización enviada! El formulario se ha limpiado para una nueva solicitud.');
-            });
-            
-            // Footer contact form - TAMBIÉN LIMPIAMOS ESTE
-            document.getElementById('footerContactForm').addEventListener('submit', function(e) {
-                e.preventDefault();
-                const name = document.getElementById('footerName').value;
-                const phone = document.getElementById('footerPhone').value;
-                const msg = document.getElementById('footerMessage').value;
-                
-                const message = `*Contacto desde web*\n\n*Nombre:* ${name}\n*Teléfono:* ${phone}\n*Mensaje:* ${msg}`;
-                window.open(`https://wa.me/50683335665?text=${encodeURIComponent(message)}`, '_blank');
-                
-                // Limpiar formulario de contacto del footer
-                document.getElementById('footerName').value = '';
-                document.getElementById('footerPhone').value = '';
-                document.getElementById('footerMessage').value = '';
-            });
-        });
-
-        // ========== CHECKOUT ==========
-        function checkout() {
-            if (cart.cart.length === 0) {
-                alert('Tu carrito está vacío');
-                return;
-            }
-            
-            let message = "*Solicitud de cotización - Inter-Tech Costa Rica*\n\n";
-            
-            cart.cart.forEach(item => {
-                message += `• ${item.name} · ${item.supplier} (cantidad: ${item.quantity})\n`;
-            });
-
-            message += "\nPor favor indíqueme disponibilidad, precio e instalación recomendada.";
-
-            window.open(`https://wa.me/50683335665?text=${encodeURIComponent(message)}`, '_blank');
-            cart.close();
-        }
-
-        function showDetails(id) {
-            const p = catalogProducts.find(p => p.id === id);
-            if (p) window.open(p.source, '_blank', 'noopener');
-        }
-
-        function addProductToCart(id) {
-            const p = catalogProducts.find(p => p.id === id);
-            if (p) cart.add(p);
-        }
-
-        function contactProduct(id) {
-            const p = catalogProducts.find(p => p.id === id);
-            if (!p) return;
-            const message = `Hola, deseo información sobre ${p.name} (${p.supplier}). Lo vi en la tienda de Inter-Tech Costa Rica.`;
-            window.open(`https://wa.me/50683335665?text=${encodeURIComponent(message)}`, '_blank');
-        }
-    </script>
-</body>
+    <a
+      class="floating-wa"
+      href="https://wa.me/50683335665?text=Hola%2C%20quisiera%20informaci%C3%B3n"
+      aria-label="Contactar por WhatsApp"
+      >WA</a
+    >
+    <script src="script.js?v=6"></script>
+  </body>
 </html>
-
