@@ -399,8 +399,8 @@
         
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
         }
         
         .product-card {
@@ -411,7 +411,27 @@
             transition: var(--transition);
             position: relative;
             border: 1px solid var(--light-gray);
+            display: flex;
+            flex-direction: column;
         }
+
+        .supplier-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            z-index: 3;
+            padding: 7px 12px;
+            border-radius: 999px;
+            color: #fff;
+            background: rgba(0, 68, 148, .92);
+            box-shadow: 0 8px 20px rgba(0,0,0,.18);
+            font-size: .72rem;
+            font-weight: 700;
+            letter-spacing: .07em;
+            text-transform: uppercase;
+        }
+
+        .supplier-badge.sekunet { background: rgba(255, 107, 0, .94); }
         
         .product-card:hover {
             transform: translateY(-8px);
@@ -441,7 +461,8 @@
         .product-img img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            padding: 18px;
             transition: var(--transition);
         }
         
@@ -451,6 +472,9 @@
         
         .product-info {
             padding: 25px 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
         
         .product-category {
@@ -481,15 +505,17 @@
         }
         
         .product-price {
-            font-size: 1.4rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 20px;
         }
         
         .product-actions {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 10px;
+            margin-top: auto;
         }
         
         .product-actions .btn {
@@ -497,6 +523,10 @@
             padding: 10px;
             font-size: 0.9rem;
         }
+
+        .product-actions .contact-product { grid-column: 1 / -1; background: #20b877; color: #fff; }
+        .catalog-note { max-width: 780px; margin: -25px auto 32px; text-align: center; color: var(--gray); }
+        .catalog-source { display:inline-flex; gap:8px; align-items:center; font-size:.8rem; color:var(--primary); margin-bottom:16px; }
         
         /* ===== BRANDS SECTION ===== */
         .brands {
@@ -1419,16 +1449,15 @@
     <section class="section" id="products">
         <div class="container">
             <div class="section-title">
-                <h2>Nuestros Productos</h2>
-                <p>Selecciona los productos que necesitas para tu proyecto</p>
+                <h2>Catálogo profesional</h2>
+                <p>Equipos de videovigilancia seleccionados de Tectel y Sekunet</p>
             </div>
+            <p class="catalog-note">No publicamos precios porque cada solución se cotiza según disponibilidad, instalación y necesidades del proyecto. Agrega los equipos al carrito y conversa directamente con el vendedor.</p>
             
             <div class="filters">
                 <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="security">Seguridad</button>
-                <button class="filter-btn" data-filter="networking">Redes</button>
-                <button class="filter-btn" data-filter="computing">Computación</button>
-                <button class="filter-btn" data-filter="accessories">Accesorios</button>
+                <button class="filter-btn" data-filter="tectel">Tectel</button>
+                <button class="filter-btn" data-filter="sekunet">Sekunet</button>
             </div>
             
             <div class="products-grid" id="productsGrid"></div>
@@ -1769,10 +1798,10 @@
                 <div class="footer-col">
                     <h3>Productos</h3>
                     <ul>
-                        <li><a href="#products" data-filter="security">Cámaras de Seguridad</a></li>
-                        <li><a href="#products" data-filter="networking">Equipos de Redes</a></li>
-                        <li><a href="#products" data-filter="computing">Computadoras</a></li>
-                        <li><a href="#products" data-filter="accessories">Accesorios</a></li>
+                        <li><a href="#products">Catálogo completo</a></li>
+                        <li><a href="https://tectelcr.com/product-category/cctv/camaras/ip/" target="_blank" rel="noopener">Productos Tectel</a></li>
+                        <li><a href="https://www.sekunet.com/shop/category/videovigilancia-8" target="_blank" rel="noopener">Productos Sekunet</a></li>
+                        <li><a href="#quote">Solicitar cotización</a></li>
                         <li><a href="#ruijie">Soluciones Ruijie</a></li>
                     </ul>
                 </div>
@@ -1944,10 +1973,55 @@
           
         ];
 
+        // Catálogo autorizado de proveedores. Sin precios: venta mediante cotización personalizada.
+        const catalogProducts = [
+          {id:101,supplier:"Tectel",category:"tectel",name:"Batería recargable IMOU FRB20 para Cell 2",image:"https://tectelcr.com/wp-content/uploads/2023/08/FRB20-300x300.jpg",source:"https://tectelcr.com/producto/bateria-de-litio-recargable-imou-by-dahua-para-cell-2-frb20/",description:"Batería de litio recargable para cámara IMOU Cell 2.",price:"Precio por cotización",priceNumber:0},
+          {id:102,supplier:"Tectel",category:"tectel",name:"Bodycam Dahua 1080p 4G Wi-Fi GPS",image:"https://tectelcr.com/wp-content/uploads/2024/05/MPT221-300x300.jpg",source:"https://tectelcr.com/producto/camara-bodycam-1080p-ip68-16gb-4g-wifi-gps-ir-touch-dh-mpt221/",description:"Cámara corporal IP68 con memoria, conectividad 4G, Wi-Fi, GPS e infrarrojo.",price:"Precio por cotización",priceNumber:0},
+          {id:103,supplier:"Tectel",category:"tectel",name:"Bodycam Dahua MPT220 4G Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2023/06/MPT220-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-cuerpo-ip68-body-cam-2g-3g-4g-wifi-bluetooh-16g-interno-amp-mpt220/",description:"Cámara corporal IP68 con 4G, Wi-Fi, Bluetooth y almacenamiento interno.",price:"Precio por cotización",priceNumber:0},
+          {id:104,supplier:"Tectel",category:"tectel",name:"Dahua Hero H4C PT 4MP Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2024/08/DH-H4C-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-hero-pt-4mp-wifi-smart-ir-15m-audio-doble-via-dh-h4c/",description:"Cámara PT inteligente de 4MP con infrarrojo y audio de doble vía.",price:"Precio por cotización",priceNumber:0},
+          {id:105,supplier:"Tectel",category:"tectel",name:"Dahua Hero H4A PT 4MP Wi-Fi",image:"https://tectelcr.com/wp-content/uploads/2024/06/DH-H4A-300x300.jpg",source:"https://tectelcr.com/producto/camara-dahua-pt-4mp-3-6mm-wifi-smart-ir-10m-mic-dh-h4a/",description:"Cámara PT Wi-Fi de 4MP con visión nocturna y micrófono integrado.",price:"Precio por cotización",priceNumber:0},
+          {id:106,supplier:"Tectel",category:"tectel",name:"Dahua domo doble lente WizMind 4MP",image:"https://tectelcr.com/wp-content/uploads/2025/01/IPC-HDBW5441F-AS-E2-300x300.jpg",source:"https://tectelcr.com/producto/camara-doble-lente-ip-dahua-domo-4mp-2-8mm-ir30m-mic-ip67-ik10-wizmind-ipc-hdbw5441f-as-e2/",description:"Domo IP de doble lente, micrófono, IR 30m, IP67 e IK10.",price:"Precio por cotización",priceNumber:0},
+          {id:107,supplier:"Tectel",category:"tectel",name:"Dahua bullet HDCVI 2MP iluminación dual",image:"https://tectelcr.com/wp-content/uploads/2026/06/HAC-HFW1200RLN-IL-T-300x300.png",source:"https://tectelcr.com/producto/camara-hdcvi-dahua-bullet-2mp-1080p-2-8mm-ilum-dual-30m-audio-doble-via-ip67-hac-hfw1200rln-il-t/",description:"Bullet 1080p con iluminación dual, audio bidireccional e IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:108,supplier:"Tectel",category:"tectel",name:"Dahua eyeball HDCVI 2MP con micrófono",image:"https://tectelcr.com/wp-content/uploads/2025/02/HAC-HDW1200CLQN-IL-A-300x300.jpg",source:"https://tectelcr.com/producto/camara-hdcvi-dahua-eyeball-1080p-2mp-2-8mm-ilum-dual-20m-mic-plastica-hac-hdw1200clqn-il-a/",description:"Cámara eyeball 1080p con iluminación dual de 20m y micrófono.",price:"Precio por cotización",priceNumber:0},
+          {id:109,supplier:"Tectel",category:"tectel",name:"IMOU Bulb Cam 5MP 3K",image:"https://tectelcr.com/wp-content/uploads/2024/02/IPC-S6DN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-bulb-cam-5mp-3k-pt-via-e26-e27-con-sirena-audio-doble-via-ipc-s6dn-5m0web/",description:"Cámara tipo bombillo PT con sirena, audio bidireccional y montaje E26/E27.",price:"Precio por cotización",priceNumber:0},
+          {id:110,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser 4MP exterior",image:"https://tectelcr.com/wp-content/uploads/2023/09/IPC-S41FEN-300x300.jpg",source:"https://tectelcr.com/producto/camara-imou-by-dahua-cruiser-4mp-12v-ir30m-ip66-3-6mm-microfono-det-humano-disuacion-ipc-s41fen/",description:"Cámara exterior IP66 con detección humana, audio e IR de 30m.",price:"Precio por cotización",priceNumber:0},
+          {id:111,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser SE 4MP PoE",image:"https://tectelcr.com/wp-content/uploads/2023/08/IPC-S41FAN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-by-dahua-cruiser-se-4mp-poe-ir30m-ip66-3-6mm-det-humano-disuacion-ipc-s41fan-2/",description:"Cámara PoE IP66 con detección humana y visión infrarroja de 30m.",price:"Precio por cotización",priceNumber:0},
+          {id:112,supplier:"Tectel",category:"tectel",name:"IMOU Cruiser Dual 8MP PT",image:"https://tectelcr.com/wp-content/uploads/2024/02/IPC-S7XN-300x300.png",source:"https://tectelcr.com/producto/camara-imou-cruiser-dual-8mp-smart-full-color-doble-lente-ptz-ipc-s7xn-8m0wed/",description:"Cámara PT de doble lente 5MP + 3MP con imagen Full-Color.",price:"Precio por cotización",priceNumber:0},
+          {id:113,supplier:"Tectel",category:"tectel",name:"Dahua ANPR 4MP con radar 180km/h",image:"https://tectelcr.com/wp-content/uploads/woocommerce-placeholder-300x300.png",source:"https://tectelcr.com/producto/camara-ip-anpr-180kmh-con-radar-dahua-4mp-8-32mm-ir30m-ip68-itc431-kw4f/",description:"Cámara especializada para reconocimiento de placas con radar e IP68.",price:"Precio por cotización",priceNumber:0},
+          {id:114,supplier:"Tectel",category:"tectel",name:"Dahua ANPR 4MP 80km/h",image:"https://tectelcr.com/wp-content/uploads/2026/01/ITC413-PW4D-IZ1-300x300.png",source:"https://tectelcr.com/producto/camara-ip-anpr-80kmh-dahua-10-metros-4mp-2-7-12mm-ir30m-ip67-itc413-pw4d-iz1/",description:"Reconocimiento de placas hasta 80km/h, lente motorizado e IR de 30m.",price:"Precio por cotización",priceNumber:0},
+          {id:115,supplier:"Tectel",category:"tectel",name:"Dahua domo dual WizSense 2×4MP",image:"https://tectelcr.com/wp-content/uploads/2025/06/DH-IPC-HDBW2449F-AS-E2-IL.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-2x4mp-domo-lente-2-8mmsmart-dualfixed-focalwizsense-ip67-dh-ipc-hdbw2449f-as-e2-il/",description:"Domo inteligente de doble sensor y lente fija con protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:116,supplier:"Tectel",category:"tectel",name:"Dahua TiOC Duo 180° 8MP",image:"https://tectelcr.com/wp-content/uploads/2025/01/IPCPDW3849A18-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-2x4mp-tioc-duo-180g-8mp-2-8mm-ilum-dual-25m-disuasion-ip67-ipc-pdw3849-a180-as-pv/",description:"Vista panorámica de 180°, iluminación dual y disuasión activa.",price:"Precio por cotización",priceNumber:0},
+          {id:117,supplier:"Tectel",category:"tectel",name:"Dahua TiOC bullet 4MP Pro",image:"https://tectelcr.com/wp-content/uploads/2025/05/IPCHFW3849T1ASPVPRO-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-4mp-tioc-bullet-lente-2-8mmsirenaluz-estrobopoeip67-dh-ipc-hfw3449t1-as-pv-pro/",description:"Bullet PoE con sirena, luz estroboscópica y protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:118,supplier:"Tectel",category:"tectel",name:"Dahua WizColor TiOC domo 4MP",image:"https://tectelcr.com/wp-content/uploads/2025/05/IPC-HDW3849HASPVPRO-300x300.jpg",source:"https://tectelcr.com/producto/camara-ip-dahua-4mp-tioc-domo-lente-2-8mm-sirena-luz-estrobopoeip67-dh-ipc-hdw3449h-as-pv-pro/",description:"Domo PoE Full-Color con sirena, estrobo y protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:119,supplier:"Tectel",category:"tectel",name:"Dahua bullet panorámica 180° 8MP",image:"https://tectelcr.com/wp-content/uploads/2026/01/IPC-PFW5849-A180-E2-ASTE-300x300.png",source:"https://tectelcr.com/producto/camara-ip-dahua-bullet-180-grados-8mp-fullcolor-40m-mic-ip67-mizmind-pfw5849-a180-ea-aste/",description:"Cámara panorámica Full-Color con micrófono y alcance de 40m.",price:"Precio por cotización",priceNumber:0},
+          {id:120,supplier:"Tectel",category:"tectel",name:"Dahua bullet IP 2MP iluminación dual",image:"https://tectelcr.com/wp-content/uploads/2026/06/IPC-HFW1239TL1-A-IL-300x300.png",source:"https://tectelcr.com/producto/camara-ip-dahua-bullet-2mp-2-8mm-ilum-dual-20m-mic-ip67-ipc-hfw1239tl1-a-il/",description:"Bullet IP67 con iluminación dual de 20m y micrófono integrado.",price:"Precio por cotización",priceNumber:0},
+
+          {id:201,supplier:"Sekunet",category:"sekunet",name:"Adaptador empotrado MegaVideo Flex Arecont",image:"https://www.sekunet.com/web/image/product.product/1871/image_1024/%5BARC-MF-FMA%5D%20Adaptador%20de%20montaje%20empotrado%20para%20c%C3%A1mara%20MegaVideo%20Flex%20Arecont?unique=ee1fab8",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mf-fma-adaptador-de-montaje-empotrado-para-camara-megavideo-flex-arecont-1871",description:"Accesorio de montaje empotrado para instalaciones discretas y profesionales.",price:"Precio por cotización",priceNumber:0},
+          {id:202,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 12mm",image:"https://www.sekunet.com/web/image/product.product/3537/image_1024/%5BARC-MPM12.0A%5D%20Lente%20de%2012mm%2C%20f-1.6%2C%20Iris%20fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm120a-lente-de-12mm-f16-iris-fijo-microdome-arecont-3637",description:"Lente de 12mm f/1.6 con iris fijo para cámaras MicroDome.",price:"Precio por cotización",priceNumber:0},
+          {id:203,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 16mm",image:"https://www.sekunet.com/web/image/product.product/3538/image_1024/%5BARC-MPM16.0%5D%20Lente%20de%2016mm%2C%20f-1.6%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm160-lente-de-16mm-f16-iris-fijo-microdome-arecont-3638",description:"Lente de 16mm f/1.6 para vigilancia focalizada con MicroDome.",price:"Precio por cotización",priceNumber:0},
+          {id:204,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 2.8mm",image:"https://www.sekunet.com/web/image/product.product/3539/image_1024/%5BARC-MPM2.8A%5D%20Lente%20de%202.8mm%2C%20f-1.8%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=55130d3",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm28a-lente-de-28mm-f18-iris-fijo-microdome-arecont-3639",description:"Lente gran angular de 2.8mm f/1.8 para MicroDome.",price:"Precio por cotización",priceNumber:0},
+          {id:205,supplier:"Sekunet",category:"sekunet",name:"Lente Arecont MicroDome 6mm",image:"https://www.sekunet.com/web/image/product.product/3540/image_1024/%5BARC-MPM6.0%5D%20Lente%20de%206mm%2C%20f-1.6%2C%20Iris%20Fijo%2C%20MicroDome.%20Arecont.?unique=5a5737a",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-mpm60-lente-de-6mm-f16-iris-fijo-microdome-arecont-3640",description:"Lente de 6mm f/1.6 con iris fijo para MicroDome.",price:"Precio por cotización",priceNumber:0},
+          {id:206,supplier:"Sekunet",category:"sekunet",name:"Tapa de montaje SurroundVideo Omni",image:"https://www.sekunet.com/web/image/product.product/4563/image_1024/%5BARC-SO-CAP%5D%20Tapa%20redonda%20de%20montaje%201.5%22%20NPT%20para%20c%C3%A1mara%20SurroundVideo%20Omni?unique=6bc156f",source:"https://www.sekunet.com/shop/videovigilancia-8/arc-so-cap-tapa-redonda-de-montaje-15-npt-para-camara-surroundvideo-omni-4763",description:"Tapa redonda NPT de montaje para cámaras multisensor Omni.",price:"Precio por cotización",priceNumber:0},
+          {id:207,supplier:"Sekunet",category:"sekunet",name:"Actualización VideoXpert Professional 1 canal",image:"https://www.sekunet.com/web/image/product.template/5173/image_1024/%5BAVG-VXP-SUP-1Y%5D%20VideoXpert%20Professional%2C%20one%20%281%29%20year%20software%20upgrade%20for%20one%20%281%29%20channel.?unique=4060d3a",source:"https://www.sekunet.com/shop/videovigilancia-8/avg-vxp-sup-1y-videoxpert-professional-one-1-year-software-upgrade-for-one-1-channel-5173",description:"Cobertura anual de actualización de software para un canal VideoXpert.",price:"Precio por cotización",priceNumber:0},
+          {id:208,supplier:"Sekunet",category:"sekunet",name:"EZVIZ C6N PT 1080p interior",image:"https://www.sekunet.com/web/image/product.product/2732/image_1024/%5BEVI-CS-C6N-R101-1G2WF%5D%20C%C3%A1mara%20PT%201080p%20para%20interior%20con%20giro%20340%C2%B0%20y%20visi%C3%B3n%20nocturna%20inteligente?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-c6n-r101-1g2wf-camara-pt-1080p-para-interior-con-giro-340-y-vision-nocturna-inteligente-2732",description:"Cámara PT interior con giro de 340° y visión nocturna inteligente.",price:"Precio por cotización",priceNumber:0},
+          {id:209,supplier:"Sekunet",category:"sekunet",name:"Soporte de pared EZVIZ para cámaras PT",image:"https://www.sekunet.com/web/image/product.product/5472/image_1024/%5BEVI-CS-CMT-R100-Bracket%5D%20Soporte%20montaje%20de%20pared%2C%20Compatible:%20H6c%2C%20H6%2C%20C6N%2C%20C6c%2C%20C6%2C%20C60p%2C%20H7c%2C%20TY7%2C%20C7?unique=bc2cbdf",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-cmt-r100-bracket-soporte-montaje-de-pared-compatible-h6c-h6-c6n-c6c-c6-c60p-h7c-ty7-c7-5736",description:"Soporte compatible con las principales cámaras PT interiores EZVIZ.",price:"Precio por cotización",priceNumber:0},
+          {id:210,supplier:"Sekunet",category:"sekunet",name:"Panel solar EZVIZ",image:"https://www.sekunet.com/web/image/product.product/3912/image_1024/%5BEVI-CS-CMT-SOLAR%20PANEL-C%5D%20Panel%20Solar.%20Marca%20EZVIZ?unique=84a4fac",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-cmt-solar-panel-c-panel-solar-marca-ezviz-4012",description:"Alimentación solar para soluciones de videovigilancia EZVIZ compatibles.",price:"Precio por cotización",priceNumber:0},
+          {id:211,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H1C mini cámara 1080p",image:"https://www.sekunet.com/web/image/product.product/3321/image_1024/%5BEVI-CS-H1C-R101-1G2WR%5D%20H1C%20mini%20c%C3%A1mara%201920%20X%201080p%20c%C3%A1mara%2C%20IP%2C%202.4mm%2C%20microSD%20hasta%20512gb?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h1c-r101-1g2wr-h1c-mini-camara-1920-x-1080p-camara-ip-24mm-microsd-hasta-512gb-3421",description:"Mini cámara IP 1080p con soporte microSD de hasta 512GB.",price:"Precio por cotización",priceNumber:0},
+          {id:212,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C mini bullet Wi-Fi 1080p",image:"https://www.sekunet.com/web/image/product.product/2848/image_1024/%5BEVI-CS-H3c-R100-1K2WFL%5D%20C%C3%A1mara%20Wi-Fi%20mini%20bullet%20EZVIZ%20H3C%201080p%20IP67%20con%20detecci%C3%B3n?unique=cd832d5",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k2wfl-camara-wi-fi-mini-bullet-ezviz-h3c-1080p-ip67-con-deteccion-2848",description:"Mini bullet Wi-Fi con detección inteligente y protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:213,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C Color Night 1080p",image:"https://www.sekunet.com/web/image/product.product/5343/image_1024/%5BEVI-CS-H3C-R100-1K2WFL%5D%20C%C3%A1mara%20Wifi%20para%20exteriores%20H3c%20Color%20Night%20FHD%201080p?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k2wfl-camara-wifi-para-exteriores-h3c-color-night-fhd-1080p-5607",description:"Cámara Wi-Fi exterior Full HD con visión nocturna a color.",price:"Precio por cotización",priceNumber:0},
+          {id:214,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H3C mini bullet Wi-Fi 2K",image:"https://www.sekunet.com/web/image/product.product/2828/image_1024/%5BEVI-CS-H3C-R100-1K3WKFL%5D%20C%C3%A1mara%20Wi-Fi%202K%20Mini%20Bullet%20con%20detecci%C3%B3n%20de%20personas%20e%20IP67?unique=cd832d5",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h3c-r100-1k3wkfl-camara-wi-fi-2k-mini-bullet-con-deteccion-de-personas-e-ip67-2828",description:"Mini bullet 2K con detección de personas y protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:215,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H4 domo 2K con IA",image:"https://www.sekunet.com/web/image/product.product/5039/image_1024/%5BEVI-CS-H4-R201-1H3EKFL%282.8mm%29%5D%20C%C3%A1mara%20Domo%202K%20con%20Detecci%C3%B3n%20de%20Personas%20y%20Veh%C3%ADculos%20por%20IA%2C%20Visi%C3%B3n%20Nocturna%20a%20Color%2C%20Sirena%20y%20Luz%20Estrobosc%C3%B3pica?unique=14da134",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h4-r201-1h3ekfl28mm-camara-domo-2k-con-deteccion-de-personas-y-vehiculos-por-ia-vision-nocturna-a-color-sirena-y-luz-estroboscopica-5303",description:"Detección por IA, visión nocturna a color, sirena y luz estroboscópica.",price:"Precio por cotización",priceNumber:0},
+          {id:216,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H5 cámara IP 2K PoE",image:"https://www.sekunet.com/web/image/product.product/2695/image_1024/%5BEVI-CS-H5-R201-1H3EKFL%5D%20C%C3%A1mara%20IP%202K%20PoE%20de%20exterior%20con%20IA%2C%20sirena%2C%20estrobo%20e%20IP67?unique=f2419db",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h5-r201-1h3ekfl-camara-ip-2k-poe-de-exterior-con-ia-sirena-estrobo-e-ip67-2695",description:"Cámara exterior PoE con IA, sirena, estrobo y protección IP67.",price:"Precio por cotización",priceNumber:0},
+          {id:217,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H6C PT Wi-Fi 3K",image:"https://www.sekunet.com/web/image/product.product/2838/image_1024/%5BEVI-CS-H6C-R105-1J5WF%5D%20C%C3%A1mara%20Wi-Fi%203K%20panor%C3%A1mica%20340%C2%B0%20con%20autotracking%20y%20audio%20bidireccional?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h6c-r105-1j5wf-camara-wi-fi-3k-panoramica-340-con-autotracking-y-audio-bidireccional-2838",description:"Cámara panorámica 340° con seguimiento automático y audio bidireccional.",price:"Precio por cotización",priceNumber:0},
+          {id:218,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H6C PT Wi-Fi 2K",image:"https://www.sekunet.com/web/image/product.product/2834/image_1024/%5BEVI-CS-H6C-R105-1L3WF%5D%20C%C3%A1mara%20Wi-Fi%202K%20panor%C3%A1mica%20340%C2%B0%20con%20autotracking%20y%20audio%20bidireccional?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h6c-r105-1l3wf-camara-wi-fi-2k-panoramica-340-con-autotracking-y-audio-bidireccional-2834",description:"Cámara PT 2K de 340° con autotracking y comunicación de doble vía.",price:"Precio por cotización",priceNumber:0},
+          {id:219,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H8C 3MP PoE exterior",image:"https://www.sekunet.com/web/image/product.product/2649/image_1024/%5BEVI-CS-H8C-R200-1K3EKFL4MM%5D%20C%C3%A1mara%20Ezviz%20H8C%203MP%20POE%20CS-H8c-R200-1K3EKFL%284mm%29?unique=f2419db",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h8c-r200-1k3ekfl4mm-camara-ezviz-h8c-3mp-poe-cs-h8c-r200-1k3ekfl4mm-2649",description:"Cámara PT exterior de 3MP con alimentación PoE.",price:"Precio por cotización",priceNumber:0},
+          {id:220,supplier:"Sekunet",category:"sekunet",name:"EZVIZ H8C SE exterior rotativa 2K",image:"https://www.sekunet.com/web/image/product.product/3099/image_1024/%5BEVI-CS-H8C-R200-1K3WKFL4MM%5D%20EZVIZ%20H8c%20SE%20C%C3%A1mara%20de%20Seguridad%20Exterior%20Rotativa%202K%20WiFi%20Blanca?unique=218f0da",source:"https://www.sekunet.com/shop/videovigilancia-8/evi-cs-h8c-r200-1k3wkfl4mm-ezviz-h8c-se-camara-de-seguridad-exterior-rotativa-2k-wifi-blanca-3199",description:"Cámara rotativa exterior 2K con conectividad Wi-Fi.",price:"Precio por cotización",priceNumber:0}
+        ];
+
         // ========== CARRITO ==========
         class ShoppingCart {
             constructor() {
-                this.cart = JSON.parse(localStorage.getItem('intertechCart')) || [];
+                this.cart = JSON.parse(localStorage.getItem('intertechQuoteCartV2')) || [];
                 this.cartCount = document.getElementById('cartCount');
                 this.cartModal = document.getElementById('cartModal');
                 this.cartItems = document.getElementById('cartItems');
@@ -2004,7 +2078,7 @@
             }
             
             save() {
-                localStorage.setItem('intertechCart', JSON.stringify(this.cart));
+                localStorage.setItem('intertechQuoteCartV2', JSON.stringify(this.cart));
             }
             
             open() {
@@ -2035,17 +2109,14 @@
                     return;
                 }
                 
-                let total = 0;
                 this.cart.forEach(item => {
-                    total += (item.priceNumber || 0) * item.quantity;
-                    
                     const itemDiv = document.createElement('div');
                     itemDiv.className = 'cart-item';
                     itemDiv.innerHTML = `
                         <img src="${item.image}" class="cart-item-img">
                         <div class="cart-item-info">
                             <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">${item.price}</div>
+                            <div class="cart-item-price">Cotización personalizada</div>
                             <div class="cart-item-actions">
                                 <button class="quantity-btn" onclick="cart.updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
                                 <span class="item-quantity">${item.quantity}</span>
@@ -2059,12 +2130,12 @@
                 
                 this.cartFooter.innerHTML = `
                     <div class="cart-total">
-                        <span>Total:</span>
-                        <span>₡${total.toLocaleString('es-CR')}</span>
+                        <span>${this.cart.length} producto(s) seleccionado(s)</span>
+                        <span>Sin precios publicados</span>
                     </div>
                     <div class="cart-actions">
                         <button class="btn" onclick="cart.close()">Seguir Comprando</button>
-                        <button class="btn btn-secondary" onclick="checkout()">Finalizar Compra</button>
+                        <button class="btn btn-secondary" onclick="checkout()">Contactar al vendedor</button>
                     </div>
                 `;
             }
@@ -2092,23 +2163,26 @@
             const grid = document.getElementById('productsGrid');
             grid.innerHTML = '';
             
-            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            const filtered = filter === 'all' ? catalogProducts : catalogProducts.filter(p => p.category === filter);
             
             filtered.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.innerHTML = `
+                    <span class="supplier-badge ${p.category}">${p.supplier}</span>
                     <div class="product-img"><img src="${p.image}" alt="${p.name}"></div>
                     <div class="product-info">
                         <span class="product-category">${getCategoryName(p.category)}</span>
                         <h3>${p.name}</h3>
                         <p class="product-description">${p.description}</p>
+                        <a class="catalog-source" href="${p.source}" target="_blank" rel="noopener">Ver ficha del proveedor <i class="fas fa-arrow-up-right-from-square"></i></a>
                         <div class="product-price">${p.price}</div>
                         <div class="product-actions">
-                            <button class="btn btn-sm" onclick="showDetails(${p.id})">Ver</button>
-                            <button class="btn btn-secondary btn-sm" onclick='cart.add(${JSON.stringify(p)})'>
+                            <button class="btn btn-sm" onclick="showDetails(${p.id})">Ver ficha</button>
+                            <button class="btn btn-secondary btn-sm" onclick="addProductToCart(${p.id})">
                                 <i class="fas fa-cart-plus"></i> Agregar
                             </button>
+                            <button class="btn btn-sm contact-product" onclick="contactProduct(${p.id})"><i class="fab fa-whatsapp"></i> Contactar al vendedor</button>
                         </div>
                     </div>
                 `;
@@ -2117,7 +2191,7 @@
         }
 
         function getCategoryName(cat) {
-            const map = { security: 'Seguridad', networking: 'Redes', computing: 'Computación', accessories: 'Accesorios' };
+            const map = { tectel: 'Catálogo Tectel', sekunet: 'Catálogo Sekunet' };
             return map[cat] || cat;
         }
 
@@ -2125,12 +2199,12 @@
         function loadQuoteProducts() {
             const list = document.getElementById('quoteProductsList');
             list.innerHTML = '';
-            products.forEach(p => {
+            catalogProducts.forEach(p => {
                 const item = document.createElement('div');
                 item.className = 'quote-product-item';
                 item.innerHTML = `
                     <input type="checkbox" value="${p.id}" id="prod_${p.id}">
-                    <label for="prod_${p.id}">${p.name} - ${p.price}</label>
+                    <label for="prod_${p.id}">${p.name} · ${p.supplier}</label>
                 `;
                 list.appendChild(item);
             });
@@ -2146,8 +2220,8 @@
             if (data.products && data.products.length) {
                 message += `\n*Productos de interés:*\n`;
                 data.products.forEach(id => {
-                    const prod = products.find(p => p.id == id);
-                    if (prod) message += `• ${prod.name} - ${prod.price}\n`;
+                    const prod = catalogProducts.find(p => p.id == id);
+                    if (prod) message += `• ${prod.name} · ${prod.supplier}\n`;
                 });
             }
             if (data.message) message += `\n*Mensaje:* ${data.message}\n`;
@@ -2259,24 +2333,33 @@
                 return;
             }
             
-            let message = "*Pedido desde carrito - Inter-Tech CR*\n\n";
-            let total = 0;
+            let message = "*Solicitud de cotización - Inter-Tech Costa Rica*\n\n";
             
             cart.cart.forEach(item => {
-                message += `• ${item.name} (${item.quantity} x ${item.price})\n`;
-                total += (item.priceNumber || 0) * item.quantity;
+                message += `• ${item.name} · ${item.supplier} (cantidad: ${item.quantity})\n`;
             });
-            
-            message += `\n*Total:* ₡${total.toLocaleString('es-CR')}\n`;
-            message += "\nPor favor contáctenme para concretar la compra.";
-            
+
+            message += "\nPor favor indíqueme disponibilidad, precio e instalación recomendada.";
+
             window.open(`https://wa.me/50683335665?text=${encodeURIComponent(message)}`, '_blank');
             cart.close();
         }
 
         function showDetails(id) {
-            const p = products.find(p => p.id === id);
-            if (p) alert(`${p.name}\n\n${p.description}\n\nPrecio: ${p.price}`);
+            const p = catalogProducts.find(p => p.id === id);
+            if (p) window.open(p.source, '_blank', 'noopener');
+        }
+
+        function addProductToCart(id) {
+            const p = catalogProducts.find(p => p.id === id);
+            if (p) cart.add(p);
+        }
+
+        function contactProduct(id) {
+            const p = catalogProducts.find(p => p.id === id);
+            if (!p) return;
+            const message = `Hola, deseo información sobre ${p.name} (${p.supplier}). Lo vi en la tienda de Inter-Tech Costa Rica.`;
+            window.open(`https://wa.me/50683335665?text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
